@@ -1,0 +1,111 @@
+.home {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: linear-gradient(180deg, #2a3170 19.44%, #2b6776 59.7%);
+
+  overflow: hidden;
+  &-stars {
+    position: absolute;
+
+    width: 200%;
+    height: 100%;
+    background-size: 50%;
+    background-position: 0% 20%;
+
+    transform: translate(0, -50%);
+
+    z-index: 5;
+  }
+
+  &-moon {
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+
+    background: #ffe5b7;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.52);
+
+    top: 20%;
+    left: 35%;
+
+    z-index: 10;
+  }
+
+  &-bottom-landscape {
+    position: absolute;
+
+    //the length of svg at 100% doesn't cover the whole width
+    width: 101%;
+    height: 40%;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 70% 50%;
+    //the bottom isn't completely level, the magic number levels the bottom landscape
+    bottom: -10%;
+
+    z-index: 20;
+  }
+
+  &-mountains {
+    position: absolute;
+    width: 110%;
+    height: 40%;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    top: 35%;
+    left: -5%;
+
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+
+    z-index: 15
+  }
+
+  &-water {
+    background: #3b68a6;
+
+    position: absolute;
+
+    width: 100%;
+    height: 40%;
+
+    bottom: 0;
+
+    z-index: 12;
+  }
+
+  &-left-trees {
+    position: absolute;
+    width: 100%;
+    height: 150%;
+
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    bottom: 12%;
+    left: -52%;
+    
+    z-index: 20;
+  }
+
+  &-right-trees {
+    position: absolute;
+    width: 100%;
+    height: 150%;
+
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    bottom: 12%;
+    right: -52%;
+    
+    z-index: 20;
+  }
+}
