@@ -9,7 +9,7 @@
   font-family: "Montserrat";
 
   overflow: hidden;
-  &-stars {
+  .stars {
     position: absolute;
 
     width: 200%;
@@ -22,7 +22,7 @@
     z-index: 5;
   }
 
-  &-moon {
+  .moon {
     position: absolute;
 
     width: 150px;
@@ -48,7 +48,7 @@
     }
   }
 
-  &-bottom-landscape {
+  .bottomLandscape {
     position: absolute;
 
     //the length of svg at 100% doesn't cover the whole width
@@ -65,7 +65,7 @@
     z-index: 20;
   }
 
-  &-mountains {
+  .mountains {
     position: absolute;
     width: 110%;
     height: 40%;
@@ -80,7 +80,7 @@
     z-index: 15;
   }
 
-  &-water {
+  .water {
     background: #3b68a6;
 
     position: absolute;
@@ -93,7 +93,7 @@
     z-index: 12;
   }
 
-  &-left-trees {
+  .leftTrees {
     position: absolute;
     width: 180vh;
     height: 240vh;
@@ -112,7 +112,7 @@
     }
   }
 
-  &-right-trees {
+  .rightTrees {
     position: absolute;
     width: 100vh;
     height: 120vh;
@@ -131,7 +131,7 @@
     }
   }
 
-  &-wind {
+  .wind {
     position: absolute;
 
     width: 120%;
@@ -145,7 +145,7 @@
     z-index: 4;
   }
 
-  &-campers {
+  .campers {
     position: absolute;
 
     width: 20%;
@@ -172,7 +172,7 @@
     }
   }
 
-  &-logo {
+  .logo {
     position: absolute;
     top: 20px;
     left: 20px;
@@ -193,7 +193,7 @@
     }
   }
 
-  &-landing-text {
+  .landingText {
     position: absolute;
     left: 15%;
     top: 40%;
@@ -221,7 +221,7 @@
     }
   }
 
-  &-moon-shadow {
+  .moonShadow {
     position: absolute;
 
     width: 200px;
@@ -248,7 +248,7 @@
     }
   }
 
-  &-mobile {
+  .mobile {
     position: absolute;
     width: 45vh;
     height: 75vh;
@@ -267,7 +267,7 @@
     }
   }
 
-  &-logo-mobile {
+  .logoMobile {
     position: absolute;
     width: calc(60px + 1vw);
     height: calc(70px + 1vw);
