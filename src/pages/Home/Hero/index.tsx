@@ -28,7 +28,7 @@ const Section1: React.FC = () => (
     <div className={styles.logo} style={{ backgroundImage: `url(${LOGO})` }} />
     <div className={styles.landingText}>REKINDLING CONNECTIONS</div>
     <div className={styles.moonShadow} style={{ backgroundImage: `url(${MOON_SHADOW})` }} />
-    <div className={styles.mobile} style={{ backgroundImage: `url(${MOBILE_TREES})` }} />
+    <div className={styles.mobileTrees} style={{ backgroundImage: `url(${MOBILE_TREES})` }} />
     <div className={styles.logoMobile} style={{ backgroundImage: `url(${LOGO_MOBILE})` }} />
   </div>
 );
