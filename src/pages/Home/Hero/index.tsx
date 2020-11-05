@@ -1,17 +1,18 @@
 import React from 'react';
-import styles from './styles.module.scss';
 
-import STARS from '../../assets/home/section1/stars.svg';
-import BOTTOM_LANDSCAPE from '../../assets/home/section1/bottom_landscape.svg';
-import MOUNTAINS from '../../assets/home/section1/mountains.svg';
-import LEFT_TREES from '../../assets/home/section1/left_trees.svg';
-import RIGHT_TREES from '../../assets/home/section1/right_trees.svg';
-import WIND from '../../assets/home/section1/wind.svg';
-import CAMPERS from '../../assets/home/section1/campers.svg';
-import LOGO from '../../assets/home/section1/logo.svg';
-import MOON_SHADOW from '../../assets/home/section1/moon_shadow.svg';
-import MOBILE_TREES from '../../assets/home/section1/mobile_trees.svg';
-import LOGO_MOBILE from '../../assets/home/section1/logo_mobile.svg';
+import STARS from 'assets/home/hero/stars.svg';
+import BOTTOM_LANDSCAPE from 'assets/home/hero/bottom_landscape.svg';
+import MOUNTAINS from 'assets/home/hero/mountains.svg';
+import LEFT_TREES from 'assets/home/hero/left_trees.svg';
+import RIGHT_TREES from 'assets/home/hero/right_trees.svg';
+import WIND from 'assets/home/hero/wind.svg';
+import CAMPERS from 'assets/home/hero/campers.svg';
+import LOGO from 'assets/home/hero/logo.svg';
+import MOON_SHADOW from 'assets/home/hero/moon_shadow.svg';
+import MOBILE_TREES from 'assets/home/hero/mobile_trees.svg';
+import LOGO_MOBILE from 'assets/home/hero/logo_mobile.svg';
+
+import styles from './styles.module.scss';
 
 const Section1: React.FC = () => (
   <div className={styles.home}>

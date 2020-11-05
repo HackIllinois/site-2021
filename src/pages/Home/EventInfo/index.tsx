@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './styles.module.scss';
 
-import LANDSCAPE_CONT from '../../../assets/home/section2/landscape_continued.svg';
+import LANDSCAPE_CONT from 'assets/home/event_info/landscape_continued.svg';
+import styles from './styles.module.scss';
 
 const EventInfo: React.FC = () => (
   <div className={styles.home}>
