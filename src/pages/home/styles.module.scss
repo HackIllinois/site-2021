@@ -1,3 +1,5 @@
+@import '../mixins';
+
 .home {
   position: relative;
 
@@ -37,12 +39,12 @@
 
     z-index: 10;
 
-    @media (max-width: 768px) {
+    @include maxQ(768px) {
       top: 35%;
       left: 8%;
     }
 
-    @media (max-width: 420px) {
+    @include maxQ(420px) {
       top: 37%;
       left: -5%;
     }
@@ -107,7 +109,7 @@
 
     z-index: 19;
 
-    @media (max-width: 768px) {
+    @include maxQ(768px) {
       display: none;
     }
   }
@@ -126,7 +128,7 @@
 
     z-index: 16;
 
-    @media (max-width: 768px) {
+    @include maxQ(768px) {
       display: none;
     }
   }
@@ -161,11 +163,11 @@
     bottom: calc(-20px + 5vw);
     right: 25%;
 
-    @media (max-width: 1400px) {
+    @include maxQ(768px) {
       bottom: 50px;
     }
 
-    @media (max-width: 420px) {
+    @include maxQ(420px) {
       height: calc(200px + 30vw);
       bottom: calc(80px - 6vw);
       right: 15%;
@@ -188,7 +190,7 @@
     min-width: 128px;
     min-height: 42px;
 
-    @media (max-width: 768px) {
+    @include maxQ(768px) {
       display: none;
     }
   }
@@ -209,7 +211,7 @@
 
     color: white;
 
-    @media (max-width: 768px) {
+    @include maxQ(768px) {
       font-size: calc(20px + 4vw);
       line-height: calc(1.2*(20px + 4vw));
       text-align: center;
@@ -235,14 +237,14 @@
 
     z-index: 15;
 
-    @media (max-width: 768px) {
+    @include maxQ(768px) {
       width: 150px;
       height: 150px;
       bottom: 10%;
       left: 8%;
     }
 
-    @media (max-width: 420px) {
+    @include maxQ(420px) {
       bottom: 15%;
       left: -4%;
     }
@@ -262,7 +264,7 @@
 
     z-index: 16;
 
-    @media (min-width: 768px) {
+    @include minQ(768px) {
       display: none;
     }
   }
@@ -279,7 +281,9 @@
 
     transform: translate(-50%, 0);
 
-    @media (min-width: 768px) {
+    z-index: 20;
+
+    @include minQ(780px) {
       display: none;
     }
   }
