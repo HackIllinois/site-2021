@@ -1,4 +1,4 @@
-.home {
+.hero {
   position: relative;
 
   width: 100vw;
@@ -9,6 +9,14 @@
   font-family: "Montserrat", sans-serif;
 
   overflow: hidden;
+
+  // amount to shift all assets below the mountains by, needs to be in sync for several assets
+   // (useful for wide screens causing bottomLandscape to take up too much height)
+  --bottom-shift: 0%;
+  @media (min-width: 1300px) and (max-height: 800px) {
+    --bottom-shift: -8%;
+  }
+
   .stars {
     position: absolute;
 
@@ -59,8 +67,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 75% 50%;
-    //the bottom isn't completely level, the magic number levels the bottom landscape
-    bottom: -2%;
+    //the bottom isn't completely level, the magic number -2% levels the bottom landscape
+    bottom: calc(-2% + var(--bottom-shift));
 
     z-index: 20;
   }
@@ -170,7 +178,7 @@
     background-repeat: no-repeat;
     background-position: 0 100%;
 
-    bottom: calc(-20px + 5vw);
+    bottom: calc(-20px + 5vw + var(--bottom-shift));
     right: 25%;
 
     @media (max-width: 768px) {
@@ -207,8 +215,8 @@
 
   .landingText {
     position: absolute;
-    left: 15%;
-    top: 40%;
+    left: 12.5%;
+    top: 42%;
 
     height: 40%;
     width: 40%;
@@ -233,19 +241,19 @@
     }
   }
 
-  .moonShadow {
+  .moonReflection {
     position: absolute;
 
     width: 200px;
     height: 200px;
 
-    bottom: 5%;
+    bottom: calc(5% + var(--bottom-shift));
     left: 33%;
 
     background-size: 100%;
     background-repeat: no-repeat;
 
-    z-index: 15;
+    z-index: 14;
 
     @media (max-width: 768px) {
       width: 150px;
@@ -283,7 +291,7 @@
     }
   }
 
-  .logoMobile {
+  .logoMobile {    
     position: absolute;
     width: calc(60px + 1vw);
     height: calc(70px + 1vw);
@@ -297,8 +305,9 @@
 
     z-index: 20;
 
-    @media (min-width: 780px) {
-      display: none;
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
     }
   }
 }
