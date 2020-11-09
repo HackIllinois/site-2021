@@ -53,16 +53,22 @@ export type regType = {
     resumeFilename: string;
 };
 
-// GET /upload/resume/upload//
-export type uploadResumeType = {
-    id: string;
-    resume: string;
-};
+// // GET /upload/resume/upload//
+// export type uploadResumeType = {
+//     id: string;
+//     resume: string;
+// };
 
-// GET /upload/photo/upload//
-export type uploadPhotoType = {
+// // GET /upload/photo/upload//
+// export type uploadPhotoType = {
+//     id: string;
+//     photo: string;
+// };
+
+export type uploadFile = {
     id: string;
-    photo: string;
+    photo?: string;
+    resume?: string;
 };
 
 // GET /user/qr/
@@ -94,11 +100,36 @@ export type eventsType = {
     ];
 };
 
-// POST /upload/blobstore/
+export type deleteBlobStoreReqType = {
+    id: string;
+};
+
 export type uploadBlobStoreType = {
     id: string;
     data: {
         thing1: string;
         thing2: string;
+    };
+};
+
+export type uploadlBlobStoreMentorTimeslotType = {
+    id: string;
+    data: {
+        email: string;
+        end_date: string;
+        id: number;
+        start_date: string;
+        text: string;
+    }[];
+};
+
+export type uploadBlobstorePrizesType = {
+    id: string;
+    data: {
+        prizes: {
+            description: string;
+            name: string;
+            sponsor: string;
+        }[];
     };
 };
