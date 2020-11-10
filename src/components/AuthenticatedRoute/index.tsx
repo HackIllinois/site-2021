@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 import { isAuthenticated, authenticate } from "api";
-import Loading from "components/Loading";
+// import Loading from "components/Loading";
 
 type propTypes = {
     path: string;
@@ -11,7 +11,7 @@ type propTypes = {
 const AuthenticatedRoute: React.FC<propTypes> = (props) => {
     if (!isAuthenticated()) {
         authenticate(props.path);
-        return <Loading />;
+        return <div>Loading</div>; /*<Loading />;*/
     }
 
     // Allow props spreading because this is a higher order component
