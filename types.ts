@@ -77,27 +77,40 @@ export type getUserQrType = {
     qrInfo: string;
 };
 
-// GET /event/
-export type eventsType = {
-    events: [
+export type eventType = {
+    id: string;
+    name: string;
+    description: string;
+    startTime: number;
+    endTime: number;
+    locations: [
         {
-            id: string;
-            name: string;
             description: string;
-            startTime: number;
-            endTime: number;
-            locations: [
-                {
-                    description: string;
-                    tags: string[];
-                    latitude: number;
-                    longitude: number;
-                }
-            ];
-            sponsor: string;
-            eventType: string;
+            tags: string[];
+            latitude: number;
+            longitude: number;
         }
     ];
+    sponsor: string;
+    eventType: string;
+};
+
+export type WeekType = {
+    index?: number;
+    date: Date;
+};
+
+export type DayType = {
+    date: Date;
+    dayOfWeek: string;
+    month: string;
+    dayOfMonth: number;
+    events: eventType[];
+};
+
+// GET /event/
+export type eventsType = {
+    events: eventType[];
 };
 
 export type deleteBlobStoreReqType = {

@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import { getToken } from "api";
 // import Loading from 'components/Loading';
 
-function mobileRedirect(os, code) {
+function mobileRedirect(os: "android" | "ios", code: string | string[] | null) {
     const to = `hackillinois://org.hackillinois.${os}/auth?code=${code}`;
     window.location.replace(to);
 }
