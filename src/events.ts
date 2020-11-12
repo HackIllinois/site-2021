@@ -11,7 +11,7 @@
 ]
 */
 
-import { DayType, eventType, WeekType } from "../types";
+import { DayType, eventType, WeekType } from "./types";
 
 export const sortEventsIntoDays = (events: eventType[]) => {
     // separate events by day into a map like so {"2/28/2019": [], "3/1/2019": [], ...}
