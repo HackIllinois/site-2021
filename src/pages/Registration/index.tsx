@@ -5,8 +5,8 @@ import Navigation from './Navigation';
 
 const Registration: React.FC = () => (
   <>
-    <Background/>
-    <Navigation/>
+    <Background />
+    <Navigation />
   </>
 );
 
