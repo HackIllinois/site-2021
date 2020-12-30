@@ -1,5 +1,10 @@
 {
-  "extends": ["react-app", "react-app/jest", "plugin:@typescript-eslint/recommended", "airbnb-typescript"],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-typescript"
+  ],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
@@ -7,6 +12,11 @@
     "object-curly-newline": "off",
     "react/require-default-props": "off",
     "linebreak-style": "off",
+<<<<<<< HEAD
+=======
+    "no-param-reassign": "off",
+    "react/prop-types": "off",
+>>>>>>> 9a72586e9160299f946d2460311b0d7635d8178c
     "max-len": "off"
   }
 }
