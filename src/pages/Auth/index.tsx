@@ -6,7 +6,10 @@ import { getToken } from 'util/api';
 // import Loading from 'components/Loading';
 
 function mobileRedirect(os: 'android' | 'ios', code: string) {
-  ReactGa.event(os);
+  ReactGa.event({
+    category: 'mobile',
+    action: os,
+  });
   const to = `hackillinois://org.hackillinois.${os}/auth?code=${code}`;
   window.location.replace(to);
 }
@@ -22,7 +25,7 @@ const Auth: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    ReactGa.pageview("/auth");
+    ReactGa.pageview('/auth');
     const { code, isAndroid, isiOS, to }: QueryTypes = queryString.parse(location.search);
 
     if (code) {
@@ -38,9 +41,7 @@ const Auth: React.FC = () => {
     } else {
       window.location.replace('/');
     }
-
-  }, [])  
-
+  }, []);
   return <div>Loading...</div>; // <Loading />;
 };
 
