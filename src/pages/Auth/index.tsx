@@ -1,47 +1,45 @@
-// temporary
-/* eslint-disable */
-// @ts-nocheck
-
 import React, { useEffect } from 'react';
 import queryString from 'query-string';
 import { useLocation } from 'react-router-dom';
 import ReactGa from 'react-ga';
-import { getToken } from 'api';
+import { getToken } from 'util/api';
 // import Loading from 'components/Loading';
 
+function mobileRedirect(os: 'android' | 'ios', code: string) {
+  ReactGa.event(os);
+  const to = `hackillinois://org.hackillinois.${os}/auth?code=${code}`;
+  window.location.replace(to);
+}
 
+type QueryTypes = {
+  code?: string;
+  isAndroid?: string;
+  isiOS?: string;
+  to?: string;
+};
 
 const Auth: React.FC = () => {
+  const location = useLocation();
 
   useEffect(() => {
-    function mobileRedirect(os: string, code) {
-      const to = `hackillinois://org.hackillinois.${os}/auth?code=${code}`;
-      ReactGa.event(os);
-      window.location.replace(to);
-    }
-    const location = useLocation();
-    const {
-      code,
-      isAndroid,
-      isiOS,
-      to,
-    } = queryString.parse(location.search);
+    ReactGa.pageview("/auth");
+    const { code, isAndroid, isiOS, to }: QueryTypes = queryString.parse(location.search);
 
-    if (!code) {
+    if (code) {
+      if (isAndroid || isiOS) {
+        const os = isAndroid ? 'android' : 'ios';
+        mobileRedirect(os, code);
+      } else {
+        getToken(code).then((token) => {
+          sessionStorage.setItem('token', token);
+          window.location.replace(to as string);
+        });
+      }
+    } else {
       window.location.replace('/');
     }
 
-    if (isAndroid || isiOS) {
-      const os = isAndroid ? 'android' : 'ios';
-      mobileRedirect(os, code);
-    } else {
-      getToken(code).then((token) => {
-        sessionStorage.setItem('token', token);
-        window.location.replace(to);
-      });
-    }
-    ReactGa.pageview("/Auth");
-  },[]);
+  }, [])  
 
   return <div>Loading...</div>; // <Loading />;
 };
