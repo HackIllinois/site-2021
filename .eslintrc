@@ -12,15 +12,8 @@
     "object-curly-newline": "off",
     "react/require-default-props": "off",
     "linebreak-style": "off",
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     "no-param-reassign": "off",
     "react/prop-types": "off",
->>>>>>> 9a72586e9160299f946d2460311b0d7635d8178c
-=======
-    "no-param-reassign": "off",
->>>>>>> 38ff90a4ea5a1673c5047817a3c3678b4a8573cf
     "max-len": "off"
   }
 }
