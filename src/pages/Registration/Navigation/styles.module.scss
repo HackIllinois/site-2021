@@ -1,0 +1,41 @@
+.navigation {
+  position: relative;
+  width: 100vw;
+  height: 100px;
+  overflow: hidden;
+
+  .string {
+    position: absolute;
+    top: 30px;
+
+    width: 1440px;
+    height: 90px;
+
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
+
+  .light_container {
+    width: 200px;
+    position: absolute;
+    z-index: 5;
+    text-align: center;
+
+    .light {
+      background: #85692F;
+      filter: blur(3px);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .light:focus {
+        outline: 0;
+        background: #FED684;
+    }
+
+    .navText {
+      color: #fff;
+      margin: 10px;
+    }
+  }
+}
