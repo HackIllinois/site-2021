@@ -7,11 +7,11 @@ type LightProps = {
   top: number,
   left: number,
   name: string,
-  index: string,
+  index: number,
   handleClick: any
 };
 
-const Light = ({ size, top, left, name, index, handleClick }: LightProps) => (
+const Light = ({ size, top, left, name, index, handleClick }: LightProps): JSX.Element => (
   <div
     className={styles.light_container}
     style={{
@@ -22,7 +22,7 @@ const Light = ({ size, top, left, name, index, handleClick }: LightProps) => (
     <button
       onClick={handleClick}
       type="button"
-      id={index}
+      id={String(index)}
       className={styles.light}
       style={{
         width: `${size}px`,

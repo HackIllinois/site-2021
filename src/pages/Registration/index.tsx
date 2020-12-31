@@ -5,11 +5,11 @@ import Navigation from './Navigation';
 import Form from './Form';
 
 const Registration: React.FC = () => {
-  const [formIndex, setFormIndex] = useState('0');
+  const [formIndex, setFormIndex] = useState(0);
   //   const [prevTab, setPrevTab] = useState<HTMLElement>();
 
   const toggleIndex = (e: { target: HTMLDivElement }) => {
-    setFormIndex(e.target.getAttribute('id') as string);
+    setFormIndex(Number(e.target.getAttribute('id')));
     // e.target.style.background = '#FED684';
     // if (prevTab) {
     //   prevTab.style.background = '#85692F';
@@ -20,7 +20,7 @@ const Registration: React.FC = () => {
   return (
     <>
       <Background />
-      <Navigation handleClick={toggleIndex} />
+      <Navigation handleClick={toggleIndex} selected={formIndex} />
       <Form formIndex={formIndex} />
     </>
   );
