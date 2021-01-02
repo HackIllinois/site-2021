@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactGA.initialize('G-2D2S4GLZPR', {
-  testMode: process.env.NODE_ENV !== 'production',
+  // testMode: process.env.NODE_ENV !== 'production',
 });
 
 ReactDOM.render(
