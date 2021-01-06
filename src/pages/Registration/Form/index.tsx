@@ -27,13 +27,13 @@ const Form = ({ formIndex }: FormProps) => {
     console.log(errors);
   }
 
-  const pages = [Welcome, PersonalInfo];
+//   const pages = [Welcome, PersonalInfo];
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)} className={styles.form}>
-      {pages.map((Page, i) => (
+      {/* {pages.map((Page, i) => (
         <Page show={formIndex === i} />
-      ))}
+      ))} */}
       {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
       <div style={{ display: formIndex === "1" ? "block" : "none" }}>
         <>
