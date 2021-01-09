@@ -70,3 +70,8 @@ export type MentorTimeslotType = {
   start_date: string;
   end_date: string;
 };
+
+export type RegistrationPageProps = {
+  errors: any;
+  register: any;
+};

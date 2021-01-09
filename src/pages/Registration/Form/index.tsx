@@ -4,7 +4,7 @@ import { useForm, SubmitHandler, SubmitErrorHandler } from "react-hook-form";
 import * as z from 'zod';
 
 import Welcome from './pages/Welcome';
-import PersonalInfo from './pages/PersonalInfo'
+import PersonalInfo from './pages/PersonalInfo';
 
 import styles from './styles.module.scss';
 
@@ -28,10 +28,14 @@ const schema = z.object({
 
 type Schema = z.infer<typeof schema>;
 
-
 type FormProps = {
   formIndex: number
 };
+
+// const fields = [
+//   [],
+//   ['name', 'email', ]
+// ]
 
 const Form = ({ formIndex }: FormProps): JSX.Element => {
   const { register, handleSubmit, watch, errors } = useForm<Schema>();
@@ -41,6 +45,7 @@ const Form = ({ formIndex }: FormProps): JSX.Element => {
   };
 
   const onError: SubmitErrorHandler<Schema> = (errors) => {
+    Object.keys(errors);
     console.log(errors);
   }
 
@@ -50,21 +55,9 @@ const Form = ({ formIndex }: FormProps): JSX.Element => {
     <form onSubmit={handleSubmit(onSubmit, onError)} className={styles.form}>
       {pages.map((Page, i) => (
         <div style={{ display: formIndex === i ? "block" : "none" }}>
-          <Page />
+          <Page errors={errors} register={register} />
         </div>
       ))}
-      {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
-      <div style={{ display: formIndex === 1 ? "block" : "none" }}>
-        <>
-          {/* register your input into the hook by invoking the "register" function */}
-          <input name="name" defaultValue="test" ref={register} />
-
-          {/* include validation with required or other standard HTML validation rules */}
-          <input name="email" ref={register({ required: true })} />
-          {/* errors will return when field validation fails  */}
-          {errors.email && <span>This field is required</span>}
-        </>
-      </div>
 
       <input type="submit" />
     </form>

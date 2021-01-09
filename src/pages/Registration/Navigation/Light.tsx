@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import styles from './styles.module.scss';
 
@@ -8,22 +9,22 @@ type LightProps = {
   left: number,
   name: string,
   index: number,
-  handleClick: any
+  handleClick: any,
+  lightUp: boolean
 };
 
-const Light = ({ size, top, left, name, index, handleClick }: LightProps): JSX.Element => (
+const Light = ({ size, top, left, name, index, handleClick, lightUp }: LightProps): JSX.Element => (
   <div
     className={styles.light_container}
     style={{
-      top: `${top}%`,
+      top: `${top}px`,
       left: `${left}%`,
     }}
   >
     <button
-      onClick={handleClick}
+      onClick={() => handleClick(index)}
       type="button"
-      id={String(index)}
-      className={styles.light}
+      className={clsx(styles.light, lightUp && styles.lightUp)}
       style={{
         width: `${size}px`,
         height: `${size}px`,

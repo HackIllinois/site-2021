@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 
 import STRING from 'assets/registration/navigation/string.svg';
@@ -10,15 +11,30 @@ type NavigationProps = {
   selected: number
 };
 
+// [name, size, top, left]
+const lights: [string, number, number, number][] = [
+  ['Welcome', 40, 55, 3],
+  ['Personal Info', 30, 50, 20],
+  ['Race Demographics', 40, 60, 35],
+  ['Education', 50, 45, 53],
+  ['Experience', 30, 50, 70],
+  ['Finish', 40, 65, 85],
+]
+
 const Navigation = ({ handleClick, selected }: NavigationProps): JSX.Element => (
   <div className={styles.navigation}>
     <div className={styles.string} style={{ backgroundImage: `url(${STRING})` }} />
-    <Light size={40} top={4.5} left={3} name="Welcome" index={0} handleClick={handleClick} />
-    <Light size={30} top={4.2} left={20} name="Personal Info" index={1} handleClick={handleClick} />
-    <Light size={40} top={5.0} left={35} name="Race Demographics" index={2} handleClick={handleClick} />
-    <Light size={50} top={4.0} left={53} name="Education" index={3} handleClick={handleClick} />
-    <Light size={30} top={4.0} left={70} name="Experience" index={4} handleClick={handleClick} />
-    <Light size={40} top={5.5} left={85} name="Finish" index={5} handleClick={handleClick} />
+    {lights.map(([name, size, top, left], i) => (
+      <Light
+        name={name}
+        size={size}
+        top={top}
+        left={left}
+        index={i}
+        handleClick={handleClick}
+        lightUp={selected === i}
+      />
+    ))}
   </div>
 );
 
