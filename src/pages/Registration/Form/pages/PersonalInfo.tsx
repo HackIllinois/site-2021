@@ -1,18 +1,41 @@
 import React from 'react';
-import { RegistrationPageProps } from 'util/types';
 
-const PersonalInfo = ({ errors, register }: RegistrationPageProps): JSX.Element => (
-  <>
-    <h1>Personal Info</h1>
-    {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
-    {/* register your input into the hook by invoking the "register" function */}
-    <input name="name" defaultValue="test" ref={register} />
+import Input from 'components/form/Input';
+import Select from 'components/form/Select';
+import states from 'data/states.json';
+import countries from 'data/countries.json';
+import styles from './styles.module.scss';
 
-    {/* include validation with required or other standard HTML validation rules */}
-    <input name="email" ref={register({ required: true })} />
-    {/* errors will return when field validation fails  */}
-    {errors.email && <span>This field is required</span>}
-  </>
+const locationOptions = states
+  .concat(countries)
+  .filter((place) => place !== 'United States') // removing US because we want people in the US to pick a state
+  .concat('Other')
+  .map((place) => ({ value: place, label: place }));
+
+const genderOptions = [
+  { label: 'Male', value: 'Male' },
+  { label: 'Female', value: 'Female' },
+  { label: 'Non-Binary', value: 'Non-Binary' },
+  { label: 'Prefer Not to Answer', value: 'Prefer Not to Answer' },
+];
+
+const PersonalInfo = (): JSX.Element => (
+  <div className={styles.registrationPage}>
+    <h1>Personal Information</h1>
+    <Input name="name" placeholder="Name" />
+    <Input name="email" placeholder="Primary Email Address" />
+    <Select
+      name="location"
+      options={locationOptions}
+      placeholder="Where are you located this summer? *"
+    />
+    <Select
+      name="gender"
+      options={genderOptions}
+      placeholder="Gender"
+      creatable
+    />
+  </div>
 );
 
 export default PersonalInfo;

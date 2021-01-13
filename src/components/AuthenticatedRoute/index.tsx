@@ -13,8 +13,7 @@ const AuthenticatedRoute = (props: AuthenticatedRoutePropTypes): JSX.Element => 
     return <div>Loading</div>;
   }
 
-  // Allow props spreading because this is a higher order component
-  return <Route {...props} />; // eslint-disable-line react/jsx-props-no-spreading
+  return <Route {...props} />;
 };
 
 export default AuthenticatedRoute;
