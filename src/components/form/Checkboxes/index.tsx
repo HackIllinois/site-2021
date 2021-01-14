@@ -102,6 +102,7 @@ const Checkboxes = ({ name, options = [], hideErrors, className, style, ...props
             label={option.label}
             checked={isChecked(option)}
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleSelect(e.target.checked, option)}
+            style={(option.isOther && isChecked(option)) ? { marginBottom: 10 } : {}}
           />
           {option.isOther && isChecked(option) && (
             <StyledInput

@@ -15,7 +15,7 @@ const Registration: React.FC = () => {
     <>
       <Background />
       <Navigation handleClick={toggleIndex} selected={formIndex} />
-      <Form formIndex={formIndex} />
+      <Form formIndex={formIndex} setFormIndex={setFormIndex} />
     </>
   );
 };

@@ -18,10 +18,6 @@ const Welcome = (): JSX.Element => (
       <a href="mailto:contact@hackillinois.org">contact@hackillinois.org</a>
       .
     </p>
-    <button type="button">
-      Next
-      <i className="material-icons">keyboard_arrow_right</i>
-    </button>
   </div>
 );
 
