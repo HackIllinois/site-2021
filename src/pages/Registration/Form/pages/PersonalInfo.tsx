@@ -20,8 +20,8 @@ const genderOptions = [
 ];
 
 const PersonalInfo = (): JSX.Element => (
-  <div className={styles.registrationPage}>
-    <h1>Personal Information</h1>
+  <div>
+    <h1 className={styles.title}>Personal Information</h1>
     <Input name="name" placeholder="Name" />
     <Input name="email" placeholder="Primary Email Address" />
     <Select

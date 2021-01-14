@@ -3,8 +3,8 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 const Welcome = (): JSX.Element => (
-  <div className={styles.registrationPage}>
-    <h1>Welcome!</h1>
+  <div>
+    <h1 className={styles.title}>Welcome!</h1>
     <p>
       HackIllinois is extremely excited to present HackThis, a fully virtual hackathon taking place between August 7th - August 15th, 2020. The focus of HackThis is to build tools to enhance virtual education for students, teachers, and schools.
     </p>

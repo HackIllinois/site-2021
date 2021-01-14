@@ -1,22 +1,20 @@
 import React from 'react';
-import clsx from 'clsx';
 import { useFormContext } from 'react-hook-form';
 
-import styles from './styles.module.scss';
 import ErrorMessage from '../ErrorMessage';
+import StyledInput from './StyledInput';
 
 type PropTypes = {
   name: string,
-  className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
-const Input = ({ name, className, ...props }: PropTypes): JSX.Element => {
+const Input = ({ name, ...props }: PropTypes): JSX.Element => {
   const { register } = useFormContext();
 
   return (
     <>
-      <input type="text" name={name} className={clsx(styles.input, className)} {...props} ref={register} />
+      <StyledInput type="text" name={name} {...props} ref={register} />
       <ErrorMessage name={name} />
     </>
   );

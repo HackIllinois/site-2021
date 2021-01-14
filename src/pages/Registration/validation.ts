@@ -31,3 +31,7 @@ export const errorMap: z.ZodErrorMap = (error, ctx) => {
 
   return { message: ctx.defaultError };
 };
+
+export const defaultValues = {
+  race: [],
+};

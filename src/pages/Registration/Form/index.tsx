@@ -2,10 +2,11 @@ import React from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { registrationSchema, RegistrationSchema, errorMap } from '../validation';
+import { registrationSchema, RegistrationSchema, errorMap, defaultValues } from '../validation';
 import Welcome from './pages/Welcome';
 import PersonalInfo from './pages/PersonalInfo';
 import styles from './styles.module.scss';
+import RaceDemographics from './pages/RaceDemographics';
 
 type FormProps = {
   formIndex: number
@@ -19,6 +20,7 @@ type FormProps = {
 const Form = ({ formIndex }: FormProps): JSX.Element => {
   const methods = useForm<RegistrationSchema>({
     resolver: zodResolver(registrationSchema, { errorMap }),
+    defaultValues,
   });
   const { handleSubmit, getValues } = methods;
 
@@ -31,7 +33,7 @@ const Form = ({ formIndex }: FormProps): JSX.Element => {
     console.log(getValues());
   };
 
-  const pages = [Welcome, PersonalInfo];
+  const pages = [Welcome, PersonalInfo, RaceDemographics];
 
   return (
     <FormProvider {...methods}>

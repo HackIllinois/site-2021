@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
+import clsx from 'clsx';
 
 import ReactSelect, { OptionTypeBase } from 'react-select';
 import ReactSelectCreatable from 'react-select/creatable';
@@ -30,10 +31,11 @@ type PropTypes = {
   options: OptionType[];
   creatable?: boolean;
   isMulti?: boolean;
-  [key: string]: any;
+  className?: string;
+  [key: string]: unknown;
 };
 
-const Select = ({ name, options = [], creatable, isMulti = false, ...props }: PropTypes): JSX.Element => {
+const Select = ({ name, options = [], creatable, isMulti = false, className, ...props }: PropTypes): JSX.Element => {
   const { control } = useFormContext();
   const { field: { onChange, onBlur, value, ref } } = useController({ name, control });
   const [isFocused, setIsFocused] = useState(false);
@@ -84,7 +86,7 @@ const Select = ({ name, options = [], creatable, isMulti = false, ...props }: Pr
         onChange={handleChange as any}
         onBlur={() => { setIsFocused(false); onBlur(); }}
         onFocus={() => setIsFocused(true)}
-        className={styles.select}
+        className={clsx(styles.select, className)}
         options={options}
         isMulti={isMulti}
         blurInputOnSelect
