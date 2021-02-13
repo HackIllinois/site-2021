@@ -7,14 +7,10 @@ import Form from './Form';
 const Registration: React.FC = () => {
   const [formIndex, setFormIndex] = useState(0);
 
-  const toggleIndex = (index: number) => {
-    setFormIndex(index);
-  };
-
   return (
     <>
       <Background />
-      <Navigation handleClick={toggleIndex} selected={formIndex} />
+      <Navigation setFormIndex={setFormIndex} formIndex={formIndex} />
       <Form formIndex={formIndex} />
     </>
   );
