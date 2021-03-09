@@ -1,9 +1,27 @@
+@import 'common.scss';
+
 .navigation {
   position: relative;
   width: 100%;
-  height: 150px;
   overflow: hidden;
+  height: 130px;
   z-index: 2;
+  
+  @media (max-height: 700px) {
+    height: 115px;
+  }
+
+  @media (min-height: 800px) {
+    height: 150px;
+  }
+
+  @media (max-width: 1023px) {
+    visibility: hidden;
+  }
+
+  @include registration-floating-screen { // the point at which the legs of the screen are not visible anymore 
+    display: none;
+  }
 
   .fixtures {
     width: 300vw;
@@ -12,6 +30,10 @@
     max-width: 4800px;
     left: 50%;
     transform: translateX(-50%);
+
+    @media (max-height: 700px) {
+      max-width: 4200px;
+    }
 
     .light {
       cursor: pointer;

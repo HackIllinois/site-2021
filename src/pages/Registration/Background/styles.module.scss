@@ -1,13 +1,13 @@
 .background {
   background: linear-gradient(180deg, #2A3170 19.44%, #2B6776 59.7%);
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   overflow: hidden;
 
   .stars {
     width: 100%;
-    height: calc(100vh - 28vw); // ensure that the stars don't overlap with the translucent mountains
+    height: calc(100% - 28vw); // ensure that the stars don't overlap with the translucent mountains
     max-height: 425px;
     background-position: center top;
     background-size: 1500px;
@@ -23,31 +23,6 @@
     @media (min-width: 2000px) {
       width: 100%;
       left: 50%;
-    }
-  }
-
-  .projector {
-    position: absolute;
-    width: 2400px;
-    height: 840px;
-    bottom: -30px;
-    left: 75%;
-    transform: translateX(-50%);
-    background-repeat: no-repeat;
-
-    z-index: 1;
-
-    @media (max-width: 1650px) {
-      bottom: -80px;
-    }
-
-    @media (max-width: 1150px) {
-      bottom: -120px;
-    }
-
-    @media (max-width: 950px) {
-      left: -500px;
-      transform: translateX(0);
     }
   }
 

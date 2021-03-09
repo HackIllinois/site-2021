@@ -16,7 +16,7 @@ const lights: [string, number, number, number][] = [
   ['Education', 2276.5, 68, 17.5],
   ['Experience', 2496.5, 50, 13.5],
   ['Finish', 2705.5, 76, 15.5],
-]
+];
 
 const Fixtures = ({ setFormIndex, formIndex }: Props): JSX.Element => {
   const [, cx, cy, r] = lights[formIndex];

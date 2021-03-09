@@ -2,12 +2,14 @@ import React from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import PROJECTOR from 'assets/registration/projector.svg';
 import NextButton from 'components/form/NextButton';
 import { registrationSchema, RegistrationSchema, errorMap, defaultValues } from '../validation';
 import Welcome from './pages/Welcome';
 import PersonalInfo from './pages/PersonalInfo';
 import RaceDemographics from './pages/RaceDemographics';
 import Education from './pages/Education';
+
 import styles from './styles.module.scss';
 
 type FormProps = {
@@ -48,16 +50,18 @@ const Form = ({ formIndex, setFormIndex }: FormProps): JSX.Element => {
   const pages = [Welcome, PersonalInfo, RaceDemographics, Education];
 
   return (
-    <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit, onError)} className={styles.form}>
-        {pages.map((Page, i) => (
-          <div style={{ display: formIndex === i ? 'block' : 'none' }}>
-            <Page />
-          </div>
-        ))}
-        {(formIndex !== 5) && <NextButton isSubmit={formIndex === 4} setFormIndex={setFormIndex} />}
-      </form>
-    </FormProvider>
+    <div className={styles.container} style={{ backgroundImage: `url("${PROJECTOR}")` }}>
+      <FormProvider {...methods}>
+        <form onSubmit={handleSubmit(onSubmit, onError)} className={styles.form}>
+          {pages.map((Page, i) => (
+            <div style={{ display: formIndex === i ? 'block' : 'none' }}>
+              <Page />
+            </div>
+          ))}
+          {(formIndex !== 5) && <NextButton isSubmit={formIndex === 4} setFormIndex={setFormIndex} />}
+        </form>
+      </FormProvider>
+    </div>
   );
 };
 

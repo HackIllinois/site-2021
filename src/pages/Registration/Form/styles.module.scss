@@ -1,29 +1,49 @@
-.form {
-  position: absolute;
-  bottom: 200px;
-  left: 75%;
-  transform: translateX(-85%);
-  width: 750px;
-  height: 500px;
-  z-index: 2;
+@import 'common.scss';
 
-  @media (max-width: 1650px) {
-    bottom: 150px;
+.container {
+  flex: 1;
+  position: relative;
+  background-size: auto 108%;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+
+  @media (min-height: 900px) {
+    flex: none;
+    height: 750px;
   }
 
   @media (max-width: 1150px) {
-    bottom: 110px;
+    background-position: 58.3% top;
   }
 
-  @media (max-width: 950px) {
-    width: 80%;
-    left: 0;
-    padding: 0 10%;
-    transform: none;
-    transform: translateX(0);
+  @include registration-floating-screen {
+    min-height: max(min(calc(100vh - 100px), 750px), 620px);
+    max-height: min(70%, 750px);
   }
 
-  .submitButton {
-    margin-top: 25px;
+  .form {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-40%);
+    width: calc(100vh - 120px);
+    min-width: calc(650px - 120px); // 650px is min-height of registration page
+    max-width: 780px;
+    top: min(max(75px, 50vh - 350px), 100px);
+
+    @media (max-width: 1150px) {
+      transform: translateX(-50%);
+      left: 53%;
+    }
+    @include registration-floating-screen {
+      min-width: 0;
+      width: 90%;
+      left: 50%;
+    }
+
+    .submitButton {
+      margin-top: 25px;
+    }
   }
 }
