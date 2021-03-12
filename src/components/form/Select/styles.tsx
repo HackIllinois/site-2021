@@ -1,10 +1,14 @@
 import { Styles } from 'react-select';
 
+const menuBackgroundColor = '#ADD8CD';
+const menuHighlightColor = '#2C9C98';
+
 const customStyles: Styles<Record<string, unknown>, true | false> = {
   control: () => ({
     background: 'transparent',
     borderBottom: '1px solid #B8B8B8',
     display: 'flex',
+    paddingBottom: 5,
   }),
   valueContainer: (base) => ({
     ...base,
@@ -18,6 +22,7 @@ const customStyles: Styles<Record<string, unknown>, true | false> = {
     bottom: 0,
     top: 'unset',
     transform: 'none',
+    fontSize: '1.125em',
   }),
   input: (base) => ({
     ...base,
@@ -66,14 +71,14 @@ const customStyles: Styles<Record<string, unknown>, true | false> = {
   }),
   menu: (base) => ({
     ...base,
-    background: '#E8AECC',
+    background: menuBackgroundColor,
     borderRadius: 20,
     padding: '0 15px',
   }),
   menuList: (base) => ({
     ...base,
     padding: '16px 0',
-    scrollbarColor: '#CF3E7F transparent',
+    scrollbarColor: `${menuHighlightColor} transparent`,
     scrollbarWidth: 'thin',
     '&::-webkit-scrollbar': {
       WebkitAppearance: 'none',
@@ -83,18 +88,18 @@ const customStyles: Styles<Record<string, unknown>, true | false> = {
     },
     '&::-webkit-scrollbar-thumb': {
       borderRadius: 10,
-      border: '3px solid #CF3E7F',
+      border: `3px solid ${menuHighlightColor}`,
     },
   }),
   option: (base, state) => {
     const shouldColor = (state.isSelected || state.isFocused) && !state.isDisabled;
     const style = {
-      border: shouldColor ? 'none' : '1px solid #514F51',
+      border: shouldColor ? 'none' : `1px solid ${menuHighlightColor}`,
       borderRadius: 10,
       cursor: 'pointer',
       padding: shouldColor ? '9px 13px' : '8px 12px',
       margin: 5,
-      backgroundColor: shouldColor ? '#CF3E7F' : '#E8AECC',
+      backgroundColor: shouldColor ? menuHighlightColor : menuBackgroundColor,
       color: shouldColor ? 'white' : 'black',
     };
 

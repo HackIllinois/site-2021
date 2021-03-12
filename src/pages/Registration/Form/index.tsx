@@ -5,12 +5,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import PROJECTOR from 'assets/registration/projector.svg';
 import NextButton from 'components/form/NextButton';
 import { registrationSchema, RegistrationSchema, errorMap, defaultValues } from '../validation';
-import Welcome from './pages/Welcome';
-import PersonalInfo from './pages/PersonalInfo';
-import RaceDemographics from './pages/RaceDemographics';
-import Education from './pages/Education';
+import Welcome from './screens/Welcome';
+import PersonalInfo from './screens/PersonalInfo';
+import RaceDemographics from './screens/RaceDemographics';
+import Education from './screens/Education';
+import Experience from './screens/Experience';
 
 import styles from './styles.module.scss';
+import Finish from './screens/Finish';
 
 type FormProps = {
   formIndex: number,
@@ -19,10 +21,10 @@ type FormProps = {
 
 const fields: (keyof RegistrationSchema)[][] = [
   [],
-  ['name', 'email', 'location', 'gender'],
+  ['firstName', 'lastName', 'email', 'location', 'gender'],
   ['race'],
-  ['degreePursued'],
-  [],
+  ['degreePursued', 'graduationYear', 'school', 'major'],
+  ['programmingYears', 'programmingAbility', 'hasInternship', 'resumeFilename'],
 ];
 
 const Form = ({ formIndex, setFormIndex }: FormProps): JSX.Element => {
@@ -47,18 +49,18 @@ const Form = ({ formIndex, setFormIndex }: FormProps): JSX.Element => {
     });
   };
 
-  const pages = [Welcome, PersonalInfo, RaceDemographics, Education];
+  const pages = [Welcome, PersonalInfo, RaceDemographics, Education, Experience, Finish];
 
   return (
     <div className={styles.container} style={{ backgroundImage: `url("${PROJECTOR}")` }}>
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit, onError)} className={styles.form}>
           {pages.map((Page, i) => (
-            <div style={{ display: formIndex === i ? 'block' : 'none' }}>
+            <div style={{ display: formIndex === i ? 'block' : 'none', height: '100%' }}>
               <Page />
             </div>
           ))}
-          {(formIndex !== 5) && <NextButton isSubmit={formIndex === 4} setFormIndex={setFormIndex} />}
+          {/* {(formIndex !== 5) && <NextButton isSubmit={formIndex === 4} setFormIndex={setFormIndex} />} */}
         </form>
       </FormProvider>
     </div>

@@ -15,7 +15,7 @@ const raceOptions = [
 ];
 
 const RaceDemographics = (): JSX.Element => (
-  <div>
+  <div className={styles.screen}>
     <h1 className={styles.title}>Race Demographics</h1>
     <Checkboxes
       name="race"

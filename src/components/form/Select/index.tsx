@@ -24,7 +24,7 @@ const customFilterOption = (option: FilterOption, rawInput: string) => {
   );
 };
 
-type OptionType = { label: string; value: unknown, isDisabled?: boolean } & OptionTypeBase;
+export type OptionType = { label: string; value: unknown, isDisabled?: boolean } & OptionTypeBase;
 
 type PropTypes = {
   name: string;

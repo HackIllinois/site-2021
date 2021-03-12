@@ -20,16 +20,19 @@ const genderOptions = [
 ];
 
 const PersonalInfo = (): JSX.Element => (
-  <div>
+  <div className={styles.screen}>
     <h1 className={styles.title}>Personal Information</h1>
-    <Input name="name" placeholder="Name" />
-    <Input name="email" placeholder="Primary Email Address" />
+    <Input className={styles.input} name="firstName" placeholder="First Name" />
+    <Input className={styles.input} name="lastName" placeholder="Last Name" />
+    <Input className={styles.input} name="email" placeholder="Primary Email Address" />
     <Select
+      className={styles.select}
       name="location"
       options={locationOptions}
       placeholder="Where are you located this summer? *"
     />
     <Select
+      className={styles.select}
       name="gender"
       options={genderOptions}
       placeholder="Gender"

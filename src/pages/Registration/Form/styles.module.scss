@@ -25,13 +25,15 @@
   .form {
     position: absolute;
     z-index: 2;
-    left: 50%;
-    transform: translateX(-40%);
+    height: 70%;
     width: calc(100vh - 120px);
     min-width: calc(650px - 120px); // 650px is min-height of registration page
     max-width: 780px;
     top: min(max(75px, 50vh - 350px), 100px);
-
+    left: 50%;
+    transform: translateX(-40%);
+    // overflow: hidden;
+    
     @media (max-width: 1150px) {
       transform: translateX(-50%);
       left: 53%;

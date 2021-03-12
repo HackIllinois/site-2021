@@ -1,0 +1,50 @@
+.screen {
+  // --field-margin: 40px;
+  font-size: 0.85em;
+  position: relative;
+  height: 100%;
+
+  .title {
+    font-size: 2em;
+    font-weight: 500;
+  }
+  
+  .text {
+    font-size: 1.25em;
+    line-height: 1.5em;
+    margin-top: 25px;
+
+    a {
+      font-weight: 600;
+      color: #46959F;
+      text-decoration: none;
+    }
+  }
+
+  &.welcome .title {
+    margin-bottom: 40px;
+  }
+
+  &.finish {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+
+    .logo {
+      display: block;
+      height: 50%;
+
+      img {
+        height: 100%;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+
+    .text {
+      text-align: center;
+    }
+  }
+}

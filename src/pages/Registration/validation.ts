@@ -3,7 +3,8 @@ import * as z from 'zod';
 // TODO: if we can get the backend to accept "name" instead of "firstName" and "lastName" then
 // RegistrationSchema could just be replaced with RegistrationType
 export const registrationSchema = z.object({
-  name: z.string().nonempty(),
+  firstName: z.string().nonempty(),
+  lastName: z.string().nonempty(),
   email: z.string().nonempty().email(),
   location: z.string().nonempty(),
   timezone: z.string().nonempty(),
