@@ -1,9 +1,10 @@
 import React from 'react';
+import clsx from 'clsx';
 import { useForm, SubmitHandler, SubmitErrorHandler, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import PROJECTOR from 'assets/registration/projector.svg';
-import NextButton from 'components/form/NextButton';
+import Button from 'components/form/Button';
 import { registrationSchema, RegistrationSchema, errorMap, defaultValues } from '../validation';
 import Welcome from './screens/Welcome';
 import PersonalInfo from './screens/PersonalInfo';
@@ -16,7 +17,7 @@ import Finish from './screens/Finish';
 
 type FormProps = {
   formIndex: number,
-  setFormIndex: any,
+  setFormIndex: React.Dispatch<React.SetStateAction<number>>,
 };
 
 const fields: (keyof RegistrationSchema)[][] = [
@@ -26,6 +27,9 @@ const fields: (keyof RegistrationSchema)[][] = [
   ['degreePursued', 'graduationYear', 'school', 'major'],
   ['programmingYears', 'programmingAbility', 'hasInternship', 'resumeFilename'],
 ];
+
+const pages = [Welcome, PersonalInfo, RaceDemographics, Education, Experience, Finish];
+const submitPageIndex = pages.length - 2;
 
 const Form = ({ formIndex, setFormIndex }: FormProps): JSX.Element => {
   const methods = useForm<RegistrationSchema>({
@@ -49,18 +53,27 @@ const Form = ({ formIndex, setFormIndex }: FormProps): JSX.Element => {
     });
   };
 
-  const pages = [Welcome, PersonalInfo, RaceDemographics, Education, Experience, Finish];
+  const nextPage = () => setFormIndex((current) => current + 1);
+  const previousPage = () => setFormIndex((current) => current - 1);
 
   return (
     <div className={styles.container} style={{ backgroundImage: `url("${PROJECTOR}")` }}>
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit, onError)} className={styles.form}>
           {pages.map((Page, i) => (
-            <div style={{ display: formIndex === i ? 'block' : 'none', height: '100%' }}>
+            <div className={clsx(styles.screenContainer, formIndex === i && styles.visible)}>
               <Page />
+
+              {formIndex !== pages.length - 1 && ( // last page does not have any buttons
+                <div className={styles.buttons}>
+                  <Button arrow="left" hidden={formIndex === 0} onClick={previousPage} />
+                  <div className={styles.spacer} />
+                  {(formIndex !== submitPageIndex) && <Button arrow="right" onClick={nextPage}>Next</Button>}
+                  {(formIndex === submitPageIndex) && <Button type="submit">Submit</Button>}
+                </div>
+              )}
             </div>
           ))}
-          {/* {(formIndex !== 5) && <NextButton isSubmit={formIndex === 4} setFormIndex={setFormIndex} />} */}
         </form>
       </FormProvider>
     </div>

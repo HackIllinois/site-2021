@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 
 import Fixtures from './Fixtures';
@@ -6,7 +5,7 @@ import Fixtures from './Fixtures';
 import styles from './styles.module.scss';
 
 type Props = {
-  setFormIndex: any,
+  setFormIndex: React.Dispatch<React.SetStateAction<number>>,
   formIndex: number
 };
 

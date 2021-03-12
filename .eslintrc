@@ -18,6 +18,7 @@
     "jsx-a11y/label-has-associated-control": ["error", {
       "assert": "either"
     }],
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "react/button-has-type": "off"
   }
 }
