@@ -20,6 +20,7 @@
   @include registration-floating-screen {
     min-height: max(min(calc(100vh - 100px), 750px), 620px);
     max-height: min(70%, 750px);
+    margin-top: 25px;
   }
 
   .form {

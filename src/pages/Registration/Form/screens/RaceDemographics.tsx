@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import Scrollbars from 'react-custom-scrollbars';
 
 import Checkboxes from 'components/form/Checkboxes';
 import styles from './styles.module.scss';
@@ -16,14 +17,17 @@ const raceOptions = [
 ];
 
 const RaceDemographics = (): JSX.Element => (
-  <div className={clsx(styles.screen, styles.raceDemographics)}>
+  <Scrollbars className={clsx(styles.screen, styles.raceDemographics)} renderView={(props) => <div className={styles.scrollbox} {...props} />} renderTrackHorizontal={(props) => <div className={styles.horizontalScrollbar} {...props} />}>
     <h1 className={styles.title}>Race Demographics</h1>
     <Checkboxes
       className={styles.checkboxes}
       name="race"
       options={raceOptions}
     />
-  </div>
+    <p className={styles.note}>
+      <i><b>Note:</b> In light of recent events, we are collecting this information in order to determine what our current attendee demographics are and how we can work on increasing diversity. However, we understand if you prefer not to answer. </i>
+    </p>
+  </Scrollbars>
 );
 
 export default RaceDemographics;

@@ -41,6 +41,7 @@ const Form = ({ formIndex, setFormIndex }: FormProps): JSX.Element => {
 
   const onSubmit: SubmitHandler<RegistrationSchema> = (data) => {
     console.log(data);
+    setFormIndex(pages.length - 1);
   };
 
   const onError: SubmitErrorHandler<RegistrationSchema> = (errorData) => {

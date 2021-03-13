@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import styles from './styles.module.scss';
 
@@ -17,8 +18,14 @@ const lights: [string, number, number, number][] = [
   ['Finish', 2705.5, 76, 15.5],
 ];
 
+const finishScreenIndex = 5;
+
 const Fixtures = ({ setFormIndex, formIndex }: Props): JSX.Element => {
   const [, scx, scy, sr] = lights[formIndex];
+
+  // we don't want the light for the Finish page to be clickable, and if we're on the Finish page nothing should be clickable
+  const isDisabled = (i: number) => (i === finishScreenIndex) || (formIndex === finishScreenIndex);
+
   return (
     <div>
       <svg width="4321" height="113" viewBox="0 0 4321 113" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.fixtures}>
@@ -26,12 +33,12 @@ const Fixtures = ({ setFormIndex, formIndex }: Props): JSX.Element => {
         {lights.map(([name, cx, cy, r], i) => (
           <React.Fragment key={name}>
             <circle
-              className={styles.light}
+              className={clsx(styles.light, isDisabled(i) && styles.disabled)}
               cx={cx}
               cy={cy}
               r={r}
               fill={i === formIndex ? '#FBB626' : '#85692F'}
-              onClick={() => setFormIndex(i)}
+              onClick={() => !isDisabled(i) && setFormIndex(i)}
             />
 
             {i === formIndex && (

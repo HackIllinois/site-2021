@@ -5,6 +5,7 @@ import Home from 'pages/Home';
 import Auth from 'pages/Auth';
 import Registration from 'pages/Registration';
 import StaticFileRedirect from 'components/StaticFileRedirect';
+import AuthenticatedRoute from 'components/AuthenticatedRoute';
 
 function App(): JSX.Element {
   return (
@@ -18,9 +19,9 @@ function App(): JSX.Element {
           <Auth />
         </Route>
 
-        <Route path="/registration" exact>
+        <AuthenticatedRoute path="/register" exact>
           <Registration />
-        </Route>
+        </AuthenticatedRoute>
 
         <Route path="/sponsor" exact>
           <StaticFileRedirect to="/documents/sponsorship.pdf" />

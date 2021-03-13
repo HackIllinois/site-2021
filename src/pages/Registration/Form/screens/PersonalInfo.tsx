@@ -31,6 +31,7 @@ const PersonalInfo = (): JSX.Element => (
       name="location"
       options={locationOptions}
       placeholder="Where are you located this semester? *"
+      menuPlacement="top"
     />
     <Constant name="timezone" value={`GMT${new Date().toString().split('GMT')[1]}`} />
     <Select

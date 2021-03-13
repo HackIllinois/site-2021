@@ -5,7 +5,6 @@
   font-size: 0.85em;
   position: relative;
   flex: 1;
-  overflow: hidden;
 
   @media (max-height: 740px) {
     margin-top: -15px;
@@ -13,6 +12,7 @@
 
   @include registration-floating-screen {
     margin-top: -10px;
+    font-size: 0.8em;
   }
 
   .title {
@@ -80,9 +80,67 @@
   }
 }
 
+.personalInfo, .education, .experience {
+  @media (min-height: 800px) {
+    width: 85%;
+  }
+
+  @include registration-floating-screen {
+    width: auto;
+  }
+}
+
 .raceDemographics {
+  // using !important to override react-custom-scrollbars
+  overflow: visible !important;
+  .scrollbox {
+    overflow: visible !important;
+  }
+  .horizontalScrollbar {
+    display: none;
+  }
+  @include registration-floating-screen {
+    overflow: hidden !important;
+    .scrollbox {
+      overflow: scroll !important;
+    }
+  }
+
   .title {
     margin-bottom: 20px;
+  }
+
+  .checkboxes {
+    width: 60%;
+    @include registration-floating-screen {
+      width: auto;
+    }
+  }
+
+  .note {
+    position: absolute;
+    width: 44%;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    b{
+      font-weight: 600;
+    }
+
+    @media (max-height: 700px) {
+      right: -25px;
+    }
+
+    @media (min-height: 800px) {
+      right: 20px;
+    }
+
+    @include registration-floating-screen {
+      position: static;
+      width: auto;
+      transform: none;
+    }
   }
 
   @media (max-height: 860px) {
@@ -98,6 +156,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   box-sizing: border-box;
+  overflow: hidden;
 
   .logo {
     display: block;

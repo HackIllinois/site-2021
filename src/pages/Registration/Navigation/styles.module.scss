@@ -37,6 +37,9 @@
 
     .light {
       cursor: pointer;
+      &.disabled {
+        cursor: default;
+      }
     }
   }
 }

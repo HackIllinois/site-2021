@@ -4,10 +4,10 @@ import { isAuthenticated, authenticate } from 'util/api';
 
 type AuthenticatedRoutePropTypes = {
   path: string;
+  [key: string]: unknown;
 };
 
-const AuthenticatedRoute = (props: AuthenticatedRoutePropTypes): JSX.Element => {
-  const { path } = props;
+const AuthenticatedRoute = ({ path, ...props }: AuthenticatedRoutePropTypes): JSX.Element => {
   if (!isAuthenticated()) {
     authenticate(path);
     return <div>Loading</div>;
