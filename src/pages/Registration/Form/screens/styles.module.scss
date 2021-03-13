@@ -1,3 +1,5 @@
+@import 'common.scss';
+
 .screen {
   --field-margin: 40px;
   font-size: 0.85em;
@@ -9,12 +11,20 @@
     margin-top: -15px;
   }
 
+  @include registration-floating-screen {
+    margin-top: -10px;
+  }
+
   .title {
     font-size: 2em;
     font-weight: 500;
 
     @media screen and (max-height: 700px) {
       margin-bottom: -20px;
+    }
+
+    @include registration-floating-screen {
+      margin-bottom: -5px;
     }
   }
   
@@ -32,10 +42,18 @@
 }
 
 .welcome {
+  .text {
+    margin-right: 15px;
+  }
+
   @media (max-height: 720px) {
     margin-bottom: 10px;
-    .text {
-      margin-right: 15px;
+  }
+  
+  .scrollbox { // using !important to override react-custom-scrollbars
+    overflow: hidden !important;
+    @media (max-height: 720px) {
+      overflow: scroll !important;
     }
   }
 

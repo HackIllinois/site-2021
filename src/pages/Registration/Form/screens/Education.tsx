@@ -37,7 +37,7 @@ const Education = (): JSX.Element => (
     <Select name="degreePursued" options={degreeOptions} placeholder="What degree are you currently pursuing? *" />
     <Select name="graduationYear" options={graduationYearOptions} placeholder="Graduation Year (Enter N/A if not applicable) *" />
     <Select name="school" options={schoolOptions} placeholder="School (Enter N/A if not applicable) *" creatable />
-    <Select name="major" options={majorOptions} placeholder="Major (Enter N/A if not applicable) *" creatable />
+    <Select name="major" options={majorOptions} placeholder="Major (Enter N/A if not applicable) *" menuPlacement="top" creatable />
   </div>
 );
 

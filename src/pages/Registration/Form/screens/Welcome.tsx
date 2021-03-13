@@ -5,7 +5,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import styles from './styles.module.scss';
 
 const Welcome = (): JSX.Element => (
-  <Scrollbars className={clsx(styles.screen, styles.welcome)} autoHide={false}>
+  <Scrollbars className={clsx(styles.screen, styles.welcome)} autoHide={false} renderView={(props) => <div className={styles.scrollbox} {...props} />}>
     <h1 className={styles.title}>Welcome!</h1>
     <p className={styles.text}>
       We’re excited to present HackIllinois 2021, our fully virtual hackathon held from April 9-12. Join us to work on projects, attend workshops on a variety of topics in tech, and participate in exciting challenges and mini-events throughout the duration of the Hackathon.

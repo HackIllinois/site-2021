@@ -38,6 +38,7 @@ const PersonalInfo = (): JSX.Element => (
       name="gender"
       options={genderOptions}
       placeholder="Gender"
+      menuPlacement="top"
       creatable
     />
   </div>
