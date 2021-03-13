@@ -1,124 +1,140 @@
+@import '../breakpoints.scss';
+
 .eventInfo {
+  position: relative;
+  margin-top: -23px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    margin-top: -1px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    background-color: #2C9C98;
+  }
+
+  .campfire {
+    -webkit-user-drag: none;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+
+    width: 90%;
+    max-width: 1500px;
+
+    &.desktop {
+      display: initial;
+    }
+    
+    @media screen and (max-width: $tablet-breakpoint) {
+      &.tablet {
+        display: initial;
+      }
+      &.desktop, &.mobile {
+        display: none;
+      }
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      &.mobile {
+        display: initial;
+      }
+      &.tablet, &.desktop {
+        display: none;
+      }
+    }
+  }
+
+  .blob {
+    --space: 60px; // extra space above and below the blob
+    display: none;
+    position: absolute;
+    top: var(--space);
+    height: calc(100% - 2*var(--space));
+    width: 100%;
+    max-width: 1260px;
+
+    @media (max-width: $tablet-breakpoint) {
+      display: initial;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      display: none;
+    }
+  }
+
+  .textContainer {
     position: relative;
+    z-index: 1;
 
-    width: 100vw;
+    color: white;
+    font-size: 0.85em;
 
-    height: 140vh;
+    margin: 200px 0 100px 7%; // min(10%, 180px);
+    padding-bottom: 1px;
+    width: 55%;
+    max-width: 800px;
 
-    background: #286574;
-    overflow: hidden;
-
-    .landscapeCont {
-        position: absolute;
-        text-align: right;
-
-        width: 120%;
-        height: 100%;
-
-        background-size: 100%;
-        transform: translateX(-10%);
-        background-repeat: no-repeat;
-
-        z-index: 3;
-
-        @media (max-width: 1200px) {
-            width: 130%;
-            transform: translate(-5%, 0);
-        }
+    @media (max-width: $tablet-breakpoint) {
+      margin-top: 130px;
+      width: 86%;
+      max-width: none;
+      margin-bottom: 135px;
+    }
+    
+    @media (max-width: 900px) {
+      font-size: .8em;
     }
 
-    .blob {
-        position: absolute;
-        text-align: right;
-
-        width: 180%;
-        // width: 120%;
-        max-width: 1450px;
-        // width: 1600px;
-        height: 100%;
-
-        background-size: 100%;
-        background-repeat: no-repeat;
-
-        z-index: 2;
+    @media (max-width: $mobile-breakpoint) {
+      margin-top: 55vw;
     }
 
-    .campfire {
-        position: absolute;
-
-        width: 100%;
-        height: 100%;
-
-        background-size: 100%;
-        background-repeat: no-repeat;
-
-        z-index: 4;
-
-        @media (max-width: 1200px) {
-            width: 75%;
-            transform: translate(360px, 135px);
-        }
+    @media (max-width: 500px) {
+      font-size: .75em;
     }
 
-    .textContainer {
-        position: relative;
-        width: 50%;
-        color: white;
-        font-family: "Montserrat", sans-serif;
-        z-index: 4;
-        transform: translate(50px, 16vw);
-        // font-size: .9em;
-
-        @media (max-width: 1200px) {
-            width: 60%;
-            transform: translate(50px, 19vw);
-        }
-
-        @media (max-width: 1000px) {
-            width: 70%;
-        }
-
-        @media (max-width: 800px) {
-            width: 80%;
-        }
-
-        h1 {
-            font-weight: 600;
-            font-size: 1.5em;
-            line-height: 29px;
-            margin-bottom: 0px;
-
-            @media (max-width: 768px) {
-                top: 35%;
-                left: 8%;
-            }
-        }
-
-        h2 {
-            font-weight: 600;
-            font-size: 1.125em;
-            line-height: 24px;
-            margin-bottom: 0px;
-
-            @media (max-width: 768px) {
-                top: 35%;
-                left: 8%;
-            }
-        }
-
-        p {
-            font-size: 1em;
-            line-height: 22px;
-
-            @media (max-width: 768px) {
-                top: 35%;
-                left: 8%;
-            }
-        }
-
-        .firstp {
-            margin-top: 5px;
-        }
+    @media (min-width: 1700px) {
+      max-width: 900px;
+      margin-left: 0;
+      left: 50%;
+      transform: translateX(-80%);
     }
 
+    h2 {
+      font-weight: 600;
+      font-size: 1.5em;
+      margin-bottom: 0;
+      margin-top: 20px;
+    }
+
+    p {
+      font-size: 1.125em;
+      line-height: 1.5em;
+      margin-top: 10px;
+
+      @media (max-width: $tablet-breakpoint) {
+        &.one {
+          width: 70%;
+        }
+
+        &.two {
+          width: 80%;
+        }
+
+        &.three {
+          width: 92%;
+        }
+      }
+
+      @media (max-width: $mobile-breakpoint) {
+        &.one, &.two, &.three {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
