@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 
 import Home from 'pages/Home';
 import Auth from 'pages/Auth';
@@ -24,6 +24,10 @@ function App(): JSX.Element {
 
         <Route path="/sponsor" exact>
           <StaticFileRedirect to="/documents/sponsorship.pdf" />
+        </Route>
+
+        <Route path="/">
+          <Redirect to="/" />
         </Route>
       </Switch>
     </Router>

@@ -3,6 +3,7 @@ import clsx from 'clsx';
 
 import Input from 'components/form/Input';
 import Select from 'components/form/Select';
+import Constant from 'components/form/Constant';
 import states from 'data/states.json';
 import countries from 'data/countries.json';
 import styles from './styles.module.scss';
@@ -29,8 +30,9 @@ const PersonalInfo = (): JSX.Element => (
       className={styles.select}
       name="location"
       options={locationOptions}
-      placeholder="Where are you located this summer? *"
+      placeholder="Where are you located this semester? *"
     />
+    <Constant name="timezone" value={`GMT${new Date().toString().split('GMT')[1]}`} />
     <Select
       className={styles.select}
       name="gender"

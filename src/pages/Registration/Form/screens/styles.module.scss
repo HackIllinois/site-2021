@@ -5,8 +5,8 @@
   flex: 1;
   overflow: hidden;
 
-  @media screen and (max-height: 675px) {
-    --field-margin: 35px;
+  @media (max-height: 740px) {
+    margin-top: -15px;
   }
 
   .title {
@@ -32,10 +32,6 @@
 }
 
 .welcome {
-  @media (max-height: 740px) {
-    margin-top: -15px;
-  }
-
   @media (max-height: 720px) {
     margin-bottom: 10px;
     .text {
@@ -62,6 +58,19 @@
 
     @media (max-height: 780px) {
       margin-bottom: max(calc(-740px + 100vh), 20px);
+    }
+  }
+}
+
+.raceDemographics {
+  .title {
+    margin-bottom: 20px;
+  }
+
+  @media (max-height: 860px) {
+    .checkboxes {
+      font-size: .9em;
+      --checkbox-margin: min(max(12px, calc(13/210 * (100vh - 650px) + 12px)), 25px);
     }
   }
 }

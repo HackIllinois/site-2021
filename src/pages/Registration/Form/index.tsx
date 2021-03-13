@@ -22,10 +22,11 @@ type FormProps = {
 
 const fields: (keyof RegistrationSchema)[][] = [
   [],
-  ['name', 'email', 'location', 'gender'],
+  ['name', 'email', 'location', 'timezone', 'gender'],
   ['race'],
   ['degreePursued', 'graduationYear', 'school', 'major'],
   ['programmingYears', 'programmingAbility', 'hasInternship', 'resumeFilename'],
+  [],
 ];
 
 const pages = [Welcome, PersonalInfo, RaceDemographics, Education, Experience, Finish];
@@ -43,14 +44,14 @@ const Form = ({ formIndex, setFormIndex }: FormProps): JSX.Element => {
   };
 
   const onError: SubmitErrorHandler<RegistrationSchema> = (errorData) => {
-    // going through the fields in reverse in order to jump back to first page with errors
-    fields.reverse().forEach((page, pageIndex) => {
-      page.forEach((field) => {
-        if (errorData[field]) {
-          setFormIndex((fields.length - 1) - pageIndex);
-        }
-      });
-    });
+    console.log(errorData);
+    for (let i = 0; i < fields.length; i += 1) {
+      if (fields[i].some((field) => errorData[field])) {
+        console.log(methods.getValues());
+        setFormIndex(i);
+        return;
+      }
+    }
   };
 
   const nextPage = () => setFormIndex((current) => current + 1);
@@ -61,7 +62,9 @@ const Form = ({ formIndex, setFormIndex }: FormProps): JSX.Element => {
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit, onError)} className={styles.form}>
           {pages.map((Page, i) => (
-            <div className={clsx(styles.screenContainer, formIndex === i && styles.visible)}>
+            // the array should be constant, so using index as key is fine
+            // eslint-disable-next-line react/no-array-index-key
+            <div className={clsx(styles.screenContainer, formIndex === i && styles.visible)} key={i}>
               <Page />
 
               {formIndex !== pages.length - 1 && ( // last page does not have any buttons

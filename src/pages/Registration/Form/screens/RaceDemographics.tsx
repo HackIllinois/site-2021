@@ -19,6 +19,7 @@ const RaceDemographics = (): JSX.Element => (
   <div className={clsx(styles.screen, styles.raceDemographics)}>
     <h1 className={styles.title}>Race Demographics</h1>
     <Checkboxes
+      className={styles.checkboxes}
       name="race"
       options={raceOptions}
     />

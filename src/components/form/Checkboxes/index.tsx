@@ -96,7 +96,7 @@ const Checkboxes = ({ name, options = [], hideErrors, className, style, ...props
   return (
     <div className={clsx(styles.checkboxes, className)} style={style} {...props}>
       {options.map((option) => (
-        <>
+        <React.Fragment key={option.value}>
           <StyledCheckbox
             value={option.value}
             label={option.label}
@@ -111,7 +111,7 @@ const Checkboxes = ({ name, options = [], hideErrors, className, style, ...props
               onChange={handleChangeOther}
             />
           )}
-        </>
+        </React.Fragment>
       ))}
     </div>
   );

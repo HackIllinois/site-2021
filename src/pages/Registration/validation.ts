@@ -6,7 +6,7 @@ export const registrationSchema = z.object({
   location: z.string().nonempty(),
   timezone: z.string().nonempty(),
   gender: z.string().optional(),
-  race: z.string().array().optional(),
+  race: z.string().array(),
   degreePursued: z.enum(['ASSOCIATES', 'BACHELORS', 'MASTERS', 'PHD', 'GRADUATED', 'OTHER']),
   graduationYear: z.number().int(),
   school: z.string().nonempty(),
@@ -15,7 +15,7 @@ export const registrationSchema = z.object({
   programmingAbility: z.number().int().min(1).max(5),
   hasInternship: z.boolean(),
   resumeFilename: z.string().optional(),
-  terms: z.boolean().refine((val: boolean) => val),
+  // terms: z.boolean().refine((val: boolean) => val),
 });
 
 export type RegistrationSchema = z.infer<typeof registrationSchema>;
