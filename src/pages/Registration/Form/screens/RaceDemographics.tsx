@@ -1,6 +1,7 @@
-import Checkboxes from 'components/form/Checkboxes';
 import React from 'react';
+import clsx from 'clsx';
 
+import Checkboxes from 'components/form/Checkboxes';
 import styles from './styles.module.scss';
 
 const raceOptions = [
@@ -15,7 +16,7 @@ const raceOptions = [
 ];
 
 const RaceDemographics = (): JSX.Element => (
-  <div className={styles.screen}>
+  <div className={clsx(styles.screen, styles.raceDemographics)}>
     <h1 className={styles.title}>Race Demographics</h1>
     <Checkboxes
       name="race"

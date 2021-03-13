@@ -1,10 +1,7 @@
 import * as z from 'zod';
 
-// TODO: if we can get the backend to accept "name" instead of "firstName" and "lastName" then
-// RegistrationSchema could just be replaced with RegistrationType
 export const registrationSchema = z.object({
-  firstName: z.string().nonempty(),
-  lastName: z.string().nonempty(),
+  name: z.string().nonempty().regex(/^[^ ]+ +[^ ]+.*$/, 'Please enter your first and last name.'),
   email: z.string().nonempty().email(),
   location: z.string().nonempty(),
   timezone: z.string().nonempty(),
@@ -27,6 +24,10 @@ export const errorMap: z.ZodErrorMap = (error, ctx) => {
   if (error.message) return { message: error.message };
 
   if (error.code === z.ZodErrorCode.too_small && error.type === 'string') {
+    return { message: 'Required' };
+  }
+
+  if (error.code === z.ZodErrorCode.invalid_enum_value) {
     return { message: 'Required' };
   }
 

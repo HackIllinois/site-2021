@@ -1,10 +1,11 @@
 import clsx from 'clsx';
 import React from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 import styles from './styles.module.scss';
 
 const Welcome = (): JSX.Element => (
-  <div className={clsx(styles.screen, styles.welcome)}>
+  <Scrollbars className={clsx(styles.screen, styles.welcome)} autoHide={false}>
     <h1 className={styles.title}>Welcome!</h1>
     <p className={styles.text}>
       We’re excited to present HackIllinois 2021, our fully virtual hackathon held from April 9-12. Join us to work on projects, attend workshops on a variety of topics in tech, and participate in exciting challenges and mini-events throughout the duration of the Hackathon.
@@ -18,7 +19,7 @@ const Welcome = (): JSX.Element => (
     <p className={styles.text}>
       For more information, or if you have any questions, please visit our website (<a href="/">https://hackillinois.org</a>) or email us at <a href="mailto:contact@hackillinois.org">contact@hackillinois.org</a>.
     </p>
-  </div>
+  </Scrollbars>
 );
 
 export default Welcome;

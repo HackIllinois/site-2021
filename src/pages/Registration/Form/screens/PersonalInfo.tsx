@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import Input from 'components/form/Input';
 import Select from 'components/form/Select';
@@ -20,10 +21,9 @@ const genderOptions = [
 ];
 
 const PersonalInfo = (): JSX.Element => (
-  <div className={styles.screen}>
+  <div className={clsx(styles.screen, styles.personalInfo)}>
     <h1 className={styles.title}>Personal Information</h1>
-    <Input className={styles.input} name="firstName" placeholder="First Name" />
-    <Input className={styles.input} name="lastName" placeholder="Last Name" />
+    <Input className={styles.input} name="name" placeholder="Name" />
     <Input className={styles.input} name="email" placeholder="Primary Email Address" />
     <Select
       className={styles.select}

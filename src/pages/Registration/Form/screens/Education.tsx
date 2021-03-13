@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Input from 'components/form/Input';
 import Select, { OptionType } from 'components/form/Select';
+import clsx from 'clsx';
 
 import majors from 'data/majors.json';
 import schools from 'data/schools.json';
@@ -32,7 +32,7 @@ const majorOptions: OptionType[] = firstMajors
   .map((major) => ({ value: major, label: major }));
 
 const Education = (): JSX.Element => (
-  <div className={styles.screen}>
+  <div className={clsx(styles.screen, styles.education)}>
     <h1 className={styles.title}>Education</h1>
     <Select name="degreePursued" options={degreeOptions} placeholder="What degree are you currently pursuing? *" />
     <Select name="graduationYear" options={graduationYearOptions} placeholder="Graduation Year (Enter N/A if not applicable) *" />
