@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import Home from 'pages/Home';
 import Auth from 'pages/Auth';
 import Registration from 'pages/Registration';
+import Prizes from 'pages/Prizes';
 import StaticFileRedirect from 'components/StaticFileRedirect';
 import AuthenticatedRoute from 'components/AuthenticatedRoute';
 
@@ -22,6 +23,10 @@ function App(): JSX.Element {
         <AuthenticatedRoute path="/register" exact>
           <Registration />
         </AuthenticatedRoute>
+
+        <Route path="/prizes" exact>
+          <Prizes />
+        </Route>
 
         <Route path="/sponsor" exact>
           <StaticFileRedirect to="/documents/sponsorship.pdf" />

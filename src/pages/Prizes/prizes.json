@@ -1,0 +1,29 @@
+{
+  "mainPrizes": [
+    { "name": "Prize X", "description": "", "value": 300 },
+    { "name": "Prize X", "description": "", "value": 300 }
+  ],
+  "categories": [
+    {
+      "title": "Category X",
+      "lightColor": "#EE6C72",
+      "darkColor": "#EE6C72",
+      "prizes": [
+        { "name": "Prize X", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet tincidunt cras porttitor nisl, metus quis. Nullam nulla volutpat dolor.", "value": 300 },
+        { "name": "Prize X", "description": "", "value": 300 },
+        { "name": "Prize X", "description": "", "value": 300 },
+        { "name": "Prize X", "description": "", "value": 300 }
+      ]
+    },
+    {
+      "title": "Category X",
+      "lightColor": "#EF8448",
+      "darkColor": "#981D23",
+      "prizes": [
+        { "name": "Prize X", "description": "", "value": 300 },
+        { "name": "Prize X", "description": "", "value": 300 },
+        { "name": "Prize X", "description": "", "value": 300 }
+      ]
+    }
+  ]
+}

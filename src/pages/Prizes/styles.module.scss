@@ -1,0 +1,90 @@
+.prizes {
+  $tablet-breakpoint: 1023px;
+  $mobile-breakpoint: 767px;
+  background-color: #1E2E55;
+
+  .background {
+    img {
+      position: absolute;
+    }
+
+    .leftTrees {
+      left: 0;
+      top: 10px;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .prize {
+      flex: 1;
+      margin: 0 15px;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      
+      .prizeIcon {
+        margin: auto;
+
+        &.dark {
+          display: none;
+        }
+        
+        @media (max-width: $tablet-breakpoint) {
+          &.dark {
+            display: initial;
+          }
+
+          &.light {
+            display: none;
+          }
+        }
+      }
+
+      .name {
+        font-size: 1.5em;
+        font-weight: 600;
+      }
+
+      .description {
+        font-size: 1.125em;
+        line-height: 1.5em;
+      }
+
+      .value {
+        color: #FBB63B;
+        font-size: 3em;
+        font-weight: 600;
+      }
+    }
+
+    .mainPrizes {
+      width: 60%;
+      align-self: flex-end;
+      display: flex;
+    }
+
+    .category {
+      flex: 1;
+      margin: 50px 0;
+      width: 90%;
+
+      .title {
+        color: white;
+        font-weight: 600;
+        font-size: 1.875em;
+      }
+
+      .prizesContainer {
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+  }
+}
