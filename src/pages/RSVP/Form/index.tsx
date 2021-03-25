@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars';
 import { useForm, SubmitHandler, SubmitErrorHandler, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { DateTime } from 'luxon';
 
 import PROJECTOR from 'assets/registration/projector.svg';
 import Input from 'components/form/Input';
@@ -87,7 +88,7 @@ const Form = (): JSX.Element => {
               <div className={styles.title}>RSVP</div>
               <Constant name="firstName" value={registration?.firstName} />
               <Constant name="lastName" value={registration?.lastName} />
-              <Constant name="timezone" value={`GMT${new Date().toString().split('GMT')[1]}`} />
+              <Constant name="timezone" value={DateTime.local().toFormat('ZZZZ', { locale: 'en-US' })} />
               <Random name="avatarUrl" seed={registration?.id} min={0} max={NUM_PROFILE_PICTURES} generateValue={getProfilePicture} />
               <Input name="discord" placeholder="Discord Username *" helpLink={DISCORD_HELP} />
               <Select name="teamStatus" placeholder="Team Status *" options={teamStatusOptions} />
