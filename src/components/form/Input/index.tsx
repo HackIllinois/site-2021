@@ -16,7 +16,6 @@ type PropTypes = {
 const Input = ({ name, multiline, helpLink, ...props }: PropTypes): JSX.Element => {
   const { register } = useFormContext();
 
-
   return (
     <>
       <div className={styles.inputContainer}>
