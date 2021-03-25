@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { DateTime } from 'luxon';
 
 import PROJECTOR from 'assets/registration/projector.svg';
+import LOGO_LARGE from 'assets/logo_large.svg';
 import Input from 'components/form/Input';
 import Select from 'components/form/Select';
 import Button from 'components/form/Button';
@@ -35,6 +36,7 @@ const Form = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [registration, setRegistration] = useState<WithId<RegistrationType> | null>(null);
+  const [finished, setFinished] = useState(false);
 
   const methods = useForm<RSVPSchema>({
     resolver: zodResolver(rsvpSchema, { errorMap }),
@@ -63,15 +65,18 @@ const Form = (): JSX.Element => {
   }, []); // deliberately not including `methods`
 
   const onSubmit: SubmitHandler<RSVPSchema> = async (data) => {
-    console.log('success', data);
+    setIsLoading(true);
     try {
       await Promise.all([
         rsvp(isEditing, { isAttending: true }).then(() => refreshToken()),
         createProfile(isEditing, data),
       ]);
+      setFinished(true);
     } catch (e) {
       console.log(e);
       alert('There was an error while submitting. If this error persists, please email contact@hackillinois.org');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -83,24 +88,35 @@ const Form = (): JSX.Element => {
     <div className={styles.container} style={{ backgroundImage: `url("${PROJECTOR}")` }}>
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit, onError)} className={styles.form}>
-          <Scrollbars>
-            <div className={styles.screenContainer}>
-              <div className={styles.title}>RSVP</div>
-              <Constant name="firstName" value={registration?.firstName} />
-              <Constant name="lastName" value={registration?.lastName} />
-              <Constant name="timezone" value={DateTime.local().toFormat('ZZZZ', { locale: 'en-US' })} />
-              <Random name="avatarUrl" seed={registration?.id} min={0} max={NUM_PROFILE_PICTURES} generateValue={getProfilePicture} />
-              <Input name="discord" placeholder="Discord Username *" helpLink={DISCORD_HELP} />
-              <Select name="teamStatus" placeholder="Team Status *" options={teamStatusOptions} />
-              <Select name="interests" placeholder="Interests" options={interestOptions} isMulti />
-              <Input name="description" placeholder="Bio" multiline rows="2" maxlength="400" />
-            </div>
-          </Scrollbars>
+          {(!finished) ? (
+            <>
+              <Scrollbars>
+                <div className={styles.screenContainer}>
+                  <div className={styles.title}>RSVP</div>
+                  <Constant name="firstName" value={registration?.firstName} />
+                  <Constant name="lastName" value={registration?.lastName} />
+                  <Constant name="timezone" value={DateTime.local().toFormat('ZZZZ', { locale: 'en-US' })} />
+                  <Random name="avatarUrl" seed={registration?.id} min={0} max={NUM_PROFILE_PICTURES} generateValue={getProfilePicture} />
+                  <Input name="discord" placeholder="Discord Username *" helpLink={DISCORD_HELP} />
+                  <Select name="teamStatus" placeholder="Team Status *" options={teamStatusOptions} />
+                  <Select name="interests" placeholder="Interests" options={interestOptions} isMulti />
+                  <Input name="description" placeholder="Bio" multiline rows="2" maxlength="400" />
+                </div>
+              </Scrollbars>
 
-          <div className={styles.buttons}>
-            {isLoading && <Button loading>Loading...</Button>}
-            {!isLoading && <Button type="submit">Submit</Button>}
-          </div>
+              <div className={styles.buttons}>
+                {isLoading && <Button loading>Loading...</Button>}
+                {!isLoading && <Button type="submit">Submit</Button>}
+              </div>
+            </>
+          ) : (
+            <div className={styles.finish}>
+              <a className={styles.logo} href="/">
+                <img src={LOGO_LARGE} alt="HackIllinois" />
+              </a>
+              <p className={styles.text}>Thank you for RSVPing for HackIllinois 2021! Be sure to follow our instagram (<a href="https://www.instagram.com/hackillinois/" target="_blank" rel="noreferrer">@hackillinois</a>) and our twitter (<a href="https://twitter.com/hackillinois/" target="_blank" rel="noreferrer">@hackillinois</a>). We will be posting live updates during the event that you won’t want to miss!</p>
+            </div>
+          )}
         </form>
       </FormProvider>
     </div>

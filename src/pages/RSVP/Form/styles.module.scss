@@ -49,7 +49,7 @@
     .screenContainer {
       margin-right: 20px;
       padding-bottom: 1px;
-      
+
       .title {
         font-size: 2em;
         font-weight: 500;
@@ -71,6 +71,29 @@
       justify-content: flex-end;
       z-index: 5;
       margin-top: 10px;
+    }
+  }
+
+  .finish {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    overflow: hidden;
+  
+    .logo {
+      display: block;
+      height: 50%;
+  
+      img {
+        height: 100%;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  
+    .text {
+      text-align: center;
     }
   }
 }
