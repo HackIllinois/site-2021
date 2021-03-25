@@ -11,6 +11,7 @@ import Constant from 'components/form/Constant';
 import Random from 'components/form/Random';
 import { createProfile, getRegistration, refreshToken, rsvp, getRoles, getProfile } from 'util/api';
 import { RegistrationType, WithId } from 'util/types';
+import DISCORD_HELP from 'assets/discord_username_how_to.png';
 
 import styles from './styles.module.scss';
 import { rsvpSchema, RSVPSchema, errorMap, defaultValues } from '../validation';
@@ -24,7 +25,10 @@ const getProfilePicture = (index: number) => ((index >= 0 && index < NUM_PROFILE
 
 const capitalSnakeCase = (str: string) => str.toUpperCase().replace(/ /g, '_');
 const teamStatusOptions = ['Looking for Team', 'Looking for Members', 'Not Looking'].map((label) => ({ label, value: capitalSnakeCase(label) }));
-const interestOptions = Object.values(interests).flat().sort().map((value) => ({ label: value, value }));
+const interestOptions = Object.values(interests)
+  .flat()
+  .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+  .map((value) => ({ label: value, value }));
 
 const Form = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(true);
@@ -85,10 +89,10 @@ const Form = (): JSX.Element => {
               <Constant name="lastName" value={registration?.lastName} />
               <Constant name="timezone" value={`GMT${new Date().toString().split('GMT')[1]}`} />
               <Random name="avatarUrl" seed={registration?.id} min={0} max={NUM_PROFILE_PICTURES} generateValue={getProfilePicture} />
-              <Input name="discord" placeholder="Discord Username *" />
+              <Input name="discord" placeholder="Discord Username *" helpLink={DISCORD_HELP} />
               <Select name="teamStatus" placeholder="Team Status *" options={teamStatusOptions} />
               <Select name="interests" placeholder="Interests" options={interestOptions} isMulti />
-              <Input name="description" placeholder="Description" multiline rows="3" />
+              <Input name="description" placeholder="Bio" multiline rows="2" maxlength="400" />
             </div>
           </Scrollbars>
 
