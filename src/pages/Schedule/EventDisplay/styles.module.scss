@@ -1,0 +1,105 @@
+.eventDisplay {
+  position: absolute;
+  top: 100px;
+  left: calc(6vw + 400px);
+  color: #fff;
+
+  @media (max-width: 1200px) {
+    left: calc(6vw + 250px);
+  }
+
+  h1.dayHeading {
+    display: inline-block;
+    position: relative;
+    left: 150px;
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  .events {
+    position: relative;
+
+    .eventWrapper {
+      margin-bottom: 10px;
+      display: flex;
+
+      .times {
+        box-sizing: border-box;
+        padding-right: 20px;
+        width: 150px;
+        text-align: right;
+
+        h1 {
+          font-size: 20px;
+          font-weight: 500;
+          margin-bottom: 5px;
+        }
+
+        h3 {
+          font-size: 15px;
+          opacity: 0.5;
+          font-weight: 500;
+          margin: 0;
+        }
+      }
+
+      .body {
+        flex: 1;
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 2px;
+        width: 45vw;
+        height: fit-content;
+        display: flex;
+
+        .lineContainer {
+          margin-left: 10px;
+          width: 20px;
+          text-align: center;
+
+          .line {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+
+            display: inline-block;
+            width: 7px;
+            height: 80%;
+            background: #FBB63B;
+            border-radius: 7px;
+          }
+
+          .line[data-type='minievent'] { background: #6F8CC1; }
+          .line[data-type='speaker'] { background: #EE6C72; }
+          .line[data-type='workshop'] { background: #2C9C98; }
+
+          .megaphone {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+
+        .text {
+          flex: 1;
+          padding: 0 30px 0 15px;
+
+          h2 {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 0;
+          }
+
+          h2.announcement {
+            margin: 1.0em 0;
+          }
+
+          p {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

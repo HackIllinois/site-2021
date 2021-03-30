@@ -1,0 +1,35 @@
+.guide {
+  position: absolute;
+  top: 450px;
+  left: 6vw;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+
+  @media (max-width: 1200px) {
+    top: 400px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  .eventType {
+    padding: 12px 0;
+
+    .colorTag {
+      display: inline-block;
+      position: relative;
+      top: 2.5px;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+    }
+
+    .textTag {
+      display: inline-block;
+      margin-left: 25px;
+      font-size: 18px;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.calendar {
+  position: absolute;
+  top: 120px;
+  left: 6vw;
+  text-align: center;
+  user-select: none;
+
+  h1 {
+    margin: 0;
+    font-size: 18px;
+    color: #fff;
+    text-align: left;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 5px 20px;
+
+    .calendarDay {
+      color: #fff;
+      opacity: 0.6;
+      font-size: 18px;
+      border-radius: 50%;
+  
+      div {
+        padding: 4px;
+      }
+    }
+  
+    .calendarDay[data-active='yes']:hover {
+      background-color: rgba(44, 156, 152, 0.5);
+    }
+  
+    .selectedDay {
+      opacity: 1;
+      background-color: #2C9C98;
+    }
+  
+    .activeDay {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+}
