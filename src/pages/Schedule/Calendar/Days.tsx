@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { AriaAttributes, DOMAttributes } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 
 import styles from './styles.module.scss';
@@ -7,12 +7,17 @@ import styles from './styles.module.scss';
 type Props = {
   date: number,
   setDate: React.Dispatch<React.SetStateAction<number>>,
+  width: number
 };
 
 const startDate = 7;
 const endDate = 12;
 
-const Days = ({ date, setDate }: Props): JSX.Element => {
+const Days = ({ date, setDate, width }: Props): JSX.Element => {
+  const [numOfWeeks, setNumOfWeeks] = useState(width > 950 ? 5 : 2);
+
+  useEffect(() => setNumOfWeeks(width > 950 ? 5 : 2), [width]);
+
   const changeDate = (d: number) => {
     if (d >= startDate && d <= endDate) setDate(d);
   }
@@ -54,7 +59,7 @@ const Days = ({ date, setDate }: Props): JSX.Element => {
   return (
     <tbody>
       {rows.map((d, i) => {
-        if (i > 1) return <tr key={'daysinmonth' + i}>{d}</tr>
+        if (i > 1 && i <= numOfWeeks + 1) return <tr key={'daysinmonth' + i}>{d}</tr>
       })}
     </tbody>
   )

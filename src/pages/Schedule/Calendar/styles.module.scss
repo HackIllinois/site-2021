@@ -1,9 +1,11 @@
 .calendar {
-  position: absolute;
-  top: 120px;
-  left: 6vw;
   text-align: center;
   user-select: none;
+  width: fit-content;
+
+  @media (min-width: 950px) {
+    margin-top: 40px;
+  }
 
   h1 {
     margin: 0;
@@ -14,7 +16,7 @@
 
   table {
     border-collapse: separate;
-    border-spacing: 5px 20px;
+    border-spacing: 5px 10px;
 
     .calendarDay {
       color: #fff;
@@ -23,7 +25,10 @@
       border-radius: 50%;
   
       div {
+        width: 24px;
+        height: 24px;
         padding: 4px;
+        text-align: center;
       }
     }
   

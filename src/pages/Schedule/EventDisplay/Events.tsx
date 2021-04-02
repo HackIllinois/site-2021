@@ -1,28 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+import { EventType } from 'util/types';
+import { getEvents } from 'util/api';
 import styles from './styles.module.scss';
 
 type Props = {
   date: number,
 };
-
-interface Location {
-  description: string,
-  tags: Array<string>,
-  latitude: number,
-  longitude: number
-}
-
-interface Event {
-  id: string,
-  name: string,
-  description?: string,
-  startTime: number,
-  endTime: number,
-  locations: Array<Location>,
-  sponsor: string,
-  eventType: string
-}
 
 const formatAMPM = (date: Date) => {
   let hours = date.getHours();
@@ -36,14 +20,11 @@ const formatAMPM = (date: Date) => {
 };
 
 const Events = ({ date }: Props): JSX.Element => {
-  const [eventData, setEventData] = useState<Array<Event>>();
-  const [currEvents, setCurrEvents] = useState<Array<Event>>();
+  const [eventData, setEventData] = useState<Array<EventType>>();
+  const [currEvents, setCurrEvents] = useState<Array<EventType>>();
 
   useEffect(() => {
-    fetch('https://api.hackillinois.org/event/').then(async (res) => {
-      const body = await res.json();
-      setEventData(body.events);
-    });
+    getEvents().then((events) => setEventData(events));
   }, []);
 
   useEffect(() => {
@@ -65,9 +46,9 @@ const Events = ({ date }: Props): JSX.Element => {
         const checker = event.description;
 
         return (
-          <div className={styles.eventWrapper} key={event.id}>
+          <div className={styles.eventWrapper} key={event.name}>
             <div className={styles.times}>
-              <h1>{formatAMPM(startTime)}</h1>
+              <h1 style={checker ? { marginTop: '20px' } : undefined}>{formatAMPM(startTime)}</h1>
               {checker && <h3>{formatAMPM(endTime)}</h3>}
             </div>
             <div className={styles.body}>
