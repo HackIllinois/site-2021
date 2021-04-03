@@ -8,6 +8,7 @@ import GROUND from '../../assets/mentor/ground.svg';
 import RIGHT_TREE from '../../assets/mentor/right_tree.svg';
 import LEFT_BUSH from '../../assets/mentor/left_bush.svg';
 import RIGHT_BUSH from '../../assets/mentor/right_bush.svg';
+import DROP_ARROW from '../../assets/mentor/drop_arrow.svg';
 
 const categories = [
   { name: 'Category 1', angle: 10 },
@@ -75,37 +76,83 @@ const mentors = [
 ];
 const Mentors: React.FC = () => {
   const [tab, setTab] = useState<number>(0);
+  const [dropped, setDropped] = useState(false);
   return (
     <div className={styles.background}>
-      <div className={styles.shade} />
-      <img src={RIGHT_BUSH} alt="" className={styles.right_bush} />
-      <img src={LEFT_BUSH} alt="" className={styles.left_bush} />
-      <img src={FOREGROUND_TREE} alt="" className={styles.foreground_tree} />
-      <img src={RIGHT_TREE} alt="" className={styles.right_tree} />
-      <img src={LEFT_TREE} alt="" className={styles.left_tree} />
-      <img src={GROUND} alt="" className={styles.ground} />
-      <img src={BUG} alt="" className={styles.bug} />
-      <div className={styles.mentor_type_list}>
-        {categories.map((category, i) => (
-          <div
-            style={{ transform: `rotate(${category.angle}deg)` }}
-            className={[
-              styles.category,
-              i === tab ? styles.category_select : '',
-            ].join(' ')}
-            onKeyPress={() => {}}
-            tabIndex={i}
-            onClick={() => {
-              setTab(i);
+      <div
+        className={styles.select_wrapper}
+        style={{ maxHeight: dropped ? '150px' : '45px' }}
+      >
+        {categories[tab].name.toUpperCase()}{' '}
+        <span
+          onClick={() => setDropped(!dropped)}
+          tabIndex={0}
+          onKeyPress={() => {}}
+          role="button"
+          className={styles.drop_arrow}
+        >
+          <img
+            style={{
+              transition: '.5s',
+              height: '100%',
+              transform: `rotate(${dropped ? '1980' : '0'}deg)`,
             }}
-            role="button"
-          >
-            {category.name}
-          </div>
-        ))}
+            src={DROP_ARROW}
+            alt={DROP_ARROW}
+          />
+        </span>
+        <div className={styles.drop_list}>
+          {categories.map((c, i) => (
+            <div
+              key={c.name}
+              onClick={() => {
+                setTab(i);
+                setDropped(false);
+              }}
+              tabIndex={0}
+              onKeyPress={() => {}}
+              role="button"
+              className={styles.drop_category}
+            >
+              {c.name}
+            </div>
+          ))}
+        </div>
       </div>
+      <div className={styles.shade} />
+      <div className={styles.mobile}>
+        <img src={RIGHT_BUSH} alt="" className={styles.right_bush} />
+        <img src={LEFT_BUSH} alt="" className={styles.left_bush} />
+        <img src={FOREGROUND_TREE} alt="" className={styles.foreground_tree} />
+        <img src={RIGHT_TREE} alt="" className={styles.right_tree} />
+        <img src={LEFT_TREE} alt="" className={styles.left_tree} />
+        <img src={GROUND} alt="" className={styles.ground} />
+        <img src={BUG} alt="" className={styles.bug} />
+        <div className={styles.mentor_type_list}>
+          {categories.map((category, i) => (
+            <div
+              style={{ transform: `rotate(${category.angle}deg)` }}
+              className={[
+                styles.category,
+                i === tab ? styles.category_select : '',
+              ].join(' ')}
+              onKeyPress={() => {}}
+              tabIndex={i}
+              onClick={() => {
+                setTab(i);
+              }}
+              role="button"
+            >
+              {category.name}
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className={styles.container}>
-        <div className={styles.category_title}>{categories[tab].name}</div>
+        <div className={[styles.category_title, styles.mobile].join(' ')}>
+          {categories[tab].name}
+        </div>
         <div className={styles.shader} />
         <div className={styles.mentor_list}>
           {/* Hack to get some extra padding, but also keeps the overflow cutoff at the top of the container */}
