@@ -5,6 +5,8 @@ import LEFT_TREES from 'assets/prizes/left_trees.svg';
 import RIGHT_TREES from 'assets/prizes/right_trees.svg';
 import CENTER_BUSHES from 'assets/prizes/center_bushes.svg';
 import MOUNTAINS from 'assets/prizes/mountains.svg';
+import HILLS from 'assets/prizes/hills.svg';
+import HILLS2 from 'assets/prizes/hills2.svg';
 import STARS from 'assets/prizes/stars.svg';
 import MOON from 'assets/prizes/moon.svg';
 
@@ -15,12 +17,17 @@ import PrizeIcon from './PrizeIcon';
 const Prizes = (): JSX.Element => (
   <div className={styles.prizes}>
     <div className={styles.background}>
-      <img className={styles.leftTrees} src={LEFT_TREES} alt="" />
-      <img className={styles.rightTrees} src={RIGHT_TREES} alt="" />
-      <img className={styles.centerBushes} src={CENTER_BUSHES} alt="" />
-      <img className={styles.mountains} src={MOUNTAINS} alt="" />
-      <img className={styles.stars} src={STARS} alt="" />
-      <img className={styles.moon} src={MOON} alt="" />
+      <div className={styles.topSection} style={{ backgroundImage: `url(${STARS})` }}>
+        <img className={styles.moon} src={MOON} alt="" />
+        <img className={styles.hills2} src={HILLS2} alt="" />
+        <img className={styles.mountains} src={MOUNTAINS} alt="" />
+        <img className={styles.leftTrees} src={LEFT_TREES} alt="" />
+        <img className={styles.rightTrees} src={RIGHT_TREES} alt="" />
+        <img className={styles.centerBushes} src={CENTER_BUSHES} alt="" />
+        <img className={styles.hills} src={HILLS} alt="" />
+      </div>
+      <div className={styles.solid} />
+      <div className={styles.gradient} />
     </div>
 
     <div className={styles.content}>

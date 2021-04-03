@@ -2,15 +2,88 @@
   $tablet-breakpoint: 1023px;
   $mobile-breakpoint: 767px;
   background-color: #1E2E55;
+  position: relative;
+
+  font-size: .8em;
 
   .background {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+
     img {
       position: absolute;
     }
 
+    .topSection {
+      height: 600px;
+      position: relative;
+    }
+
+    .stars {
+    }
+
+    .moon {
+      left: 160px;
+      top: 110px;
+    }
+
+    .mountains {
+      width: 80%;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-45%);
+    }
+
     .leftTrees {
       left: 0;
-      top: 10px;
+      height: calc(100% - 50px); // 100% - top
+      bottom: 0;
+    }
+
+    .centerBushes {
+      left: 50%;
+      transform: translateX(-30%);
+      bottom: 0;
+      width: 40%;
+    }
+
+    .rightTrees {
+      right: 0;
+      top: 70px;
+      height: calc(100% - 50px - 200px); // 100% - top - bottom
+      bottom: 200px;
+    }
+
+    .hills {
+      bottom: 0;
+      right: 0;
+      width: 60%;
+    }
+
+    .hills2 {
+      right: 0;
+      bottom: 0;
+      width: 45%;
+    }
+
+    .solid {
+      position: absolute;
+      top: 600px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #161654;
+    }
+
+    .gradient {
+      position: absolute;
+      top: 700px;
+      bottom:0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, #0B1132 17.43%, #151C44 82.24%, rgba(21, 28, 68, 0) 98.39%);
     }
   }
 
@@ -19,6 +92,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    padding-bottom: 100px;
 
     .prize {
       flex: 1;
@@ -50,6 +124,7 @@
       .name {
         font-size: 1.5em;
         font-weight: 600;
+        text-transform: uppercase;
       }
 
       .description {
@@ -61,18 +136,22 @@
         color: #FBB63B;
         font-size: 3em;
         font-weight: 600;
+        margin: 0;
       }
     }
 
     .mainPrizes {
-      width: 60%;
+      width: 53%;
       align-self: flex-end;
       display: flex;
+
+      margin-top: 205px;
+      margin-right: 5%;
+      margin-bottom: 45px;
     }
 
     .category {
       flex: 1;
-      margin: 50px 0;
       width: 90%;
 
       .title {
