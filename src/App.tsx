@@ -5,8 +5,10 @@ import Home from 'pages/Home';
 import Auth from 'pages/Auth';
 import Registration from 'pages/Registration';
 import Schedule from 'pages/Schedule';
+import RSVP from 'pages/RSVP';
 import StaticFileRedirect from 'components/StaticFileRedirect';
 import AuthenticatedRoute from 'components/AuthenticatedRoute';
+import CodeInTheDark from 'pages/CodeInTheDark';
 
 function App(): JSX.Element {
   return (
@@ -20,8 +22,16 @@ function App(): JSX.Element {
           <Auth />
         </Route>
 
+        <Route path="/codeinthedark" exact>
+          <CodeInTheDark />
+        </Route>
+
         <AuthenticatedRoute path="/register" exact>
           <Registration />
+        </AuthenticatedRoute>
+
+        <AuthenticatedRoute path="/rsvp" exact>
+          <RSVP />
         </AuthenticatedRoute>
 
         <Route path="/sponsor" exact>
@@ -30,6 +40,14 @@ function App(): JSX.Element {
 
         <Route path="/schedule" exact>
           <Schedule />
+        </Route>
+
+        <Route path="/terms-of-service" exact>
+          <StaticFileRedirect to="/documents/terms-of-service.pdf" />
+        </Route>
+
+        <Route path="/discord-terms-of-service" exact>
+          <StaticFileRedirect to="/documents/discord-terms-of-service.pdf" />
         </Route>
 
         <Route path="/">
