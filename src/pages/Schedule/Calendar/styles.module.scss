@@ -24,11 +24,19 @@
       font-size: 18px;
       border-radius: 50%;
   
-      div {
+      .dayButton {
+        display: block;
+        box-sizing: content-box;
         width: 24px;
         height: 24px;
         padding: 4px;
         text-align: center;
+        background: none;
+        border: none;
+        color: inherit;
+        font-size: inherit;
+        font-family: inherit;
+        cursor: inherit;
       }
     }
   

@@ -19,28 +19,28 @@ const Days = ({ date, setDate, width }: Props): JSX.Element => {
 
   const changeDate = (d: number) => {
     if (d >= startDate && d <= endDate) setDate(d);
-  }
+  };
 
   const daysInMonth = [];
   for (let i = 0; i < 4; i++) {
-    daysInMonth.push(<td className={styles.empty} key={'startblank' + i}>{""}</td>);
+    daysInMonth.push(<td className={styles.empty} key={`startblank${i}`} />);
   }
   for (let d = 1; d < 31; d++) {
     const currentDay = (d === date);
     const activeDay = (d >= startDate && d <= endDate);
     daysInMonth.push(
       <td
-        className={clsx(styles.calendarDay, currentDay && styles.selectedDay, activeDay && styles.activeDay)} 
+        className={clsx(styles.calendarDay, currentDay && styles.selectedDay, activeDay && styles.activeDay)}
         key={d}
         data-active={activeDay && !currentDay ? 'yes' : 'no'}
       >
-        <div onClick={() => changeDate(d)} >{d}</div>
-      </td>
+        <button className={styles.dayButton} onClick={() => changeDate(d)} disabled={!activeDay}>{d}</button>
+      </td>,
     );
   }
-  daysInMonth.push(<td className={styles.empty} key={'endblank'}>{""}</td>);
+  daysInMonth.push(<td className={styles.empty} key="endblank" />);
 
-  let rows: JSX.Element[][] = [];
+  const rows: JSX.Element[][] = [];
   let cells: JSX.Element[] = [];
   daysInMonth.forEach((day, i) => {
     if (i % 7 !== 0) {
@@ -58,10 +58,15 @@ const Days = ({ date, setDate, width }: Props): JSX.Element => {
   return (
     <tbody>
       {rows.map((d, i) => {
-        if (i > 1 && i <= numOfWeeks + 1) return <tr key={'daysinmonth' + i}>{d}</tr>
+        if (i > 1 && i <= numOfWeeks + 1) {
+          // array should be constant so
+          // eslint-disable-next-line react/no-array-index-key
+          return <tr key={`daysinmonth${i}`}>{d}</tr>;
+        }
+        return null;
       })}
     </tbody>
-  )
+  );
 };
 
 export default Days;
