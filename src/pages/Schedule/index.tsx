@@ -9,7 +9,7 @@ import EventDisplay from './EventDisplay';
 import styles from './styles.module.scss';
 
 const Schedule: React.FC = () => {
-  const [date, setDate] = useState(7);
+  const [date, setDate] = useState(9);
   const { width } = useWindowSize();
 
   return (

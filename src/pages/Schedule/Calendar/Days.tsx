@@ -10,7 +10,7 @@ type Props = {
   width: number
 };
 
-const startDate = 7;
+const startDate = 9;
 const endDate = 12;
 
 const Days = ({ date, setDate, width }: Props): JSX.Element => {

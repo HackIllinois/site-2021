@@ -36,6 +36,16 @@
       grid-template-columns: 235px 500px;
     }
 
+    @media (max-width: 450px) {
+      font-size: .85em;
+      grid-template-columns: 175px 410px;
+    }
+
+    @media (max-width: 370px) {
+      font-size: .8em;
+      grid-template-columns: 165px 380px;
+    }
+
     .eventType {
       padding: 12px 0;
   
@@ -55,7 +65,7 @@
   
       .textTag {
         margin-left: 25px;
-        font-size: 18px;
+        font-size: 1.125em;
   
         @media (max-width: 950px) {
           margin-left: 10px;
