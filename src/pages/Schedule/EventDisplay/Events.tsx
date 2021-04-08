@@ -4,6 +4,10 @@ import { EventType } from 'util/types';
 import { getEvents } from 'util/api';
 import styles from './styles.module.scss';
 
+// replaces any links with actual links using <a> tags
+const urlRegex = /https?:\/\/((www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*))/g;
+const processDescription = (description: string) => description.replace(urlRegex, '<a href="$&" onclick="event.stopPropagation()" target="_blank" rel="noopener noreferrer">$1</a>');
+
 type Props = {
   date: number,
 };
@@ -43,16 +47,20 @@ const Events = ({ date }: Props): JSX.Element => {
       {currEvents?.map((event) => {
         const startTime = new Date(event.startTime * 1000);
         const endTime = new Date(event.endTime * 1000);
-        const checker = event.description;
+        const hasDescription = !!event.description.trim();
+        const isAnnouncement = event.startTime === event.endTime;
+
+        let ampmMarginTop = 20;
+        if (!isAnnouncement && !hasDescription) ampmMarginTop = 5;
 
         return (
-          <div className={styles.eventWrapper} key={event.name}>
+          <div className={styles.eventWrapper} key={event.id}>
             <div className={styles.times}>
-              <h1 style={checker ? { marginTop: '20px' } : undefined}>{formatAMPM(startTime)}</h1>
-              {checker && <h3>{formatAMPM(endTime)}</h3>}
+              <h1 style={{ marginTop: ampmMarginTop }}>{formatAMPM(startTime)}</h1>
+              {!isAnnouncement && <h3>{formatAMPM(endTime)}</h3>}
             </div>
             <div className={styles.body}>
-              {checker ? (
+              {!isAnnouncement ? (
                 <>
                   <div className={styles.lineContainer}>
                     <span
@@ -62,7 +70,7 @@ const Events = ({ date }: Props): JSX.Element => {
                   </div>
                   <div className={styles.text}>
                     <h2>{event.name}</h2>
-                    <p>{event.description}</p>
+                    <p dangerouslySetInnerHTML={{ __html: processDescription(event.description) }} />
                   </div>
                 </>
               ) : (
