@@ -11,9 +11,10 @@ import RIGHT_BUSH from '../../assets/mentor/right_bush.svg';
 import DROP_ARROW from '../../assets/mentor/drop_arrow.svg';
 
 const categories = [
-  { name: 'Category 1', angle: 10 },
-  { name: 'Category 2', angle: -10 },
-  { name: 'Category 3', angle: 95 },
+  { name: 'Data Science', angle: 10 },
+  { name: 'Languages', angle: -10 },
+  { name: 'Systems', angle: 7 },
+  { name: 'Web Dev', angle: -4 },
 ];
 
 const mentors = [
@@ -95,7 +96,7 @@ const Mentors: React.FC = () => {
             style={{
               transition: '.5s',
               height: '100%',
-              transform: `rotate(${dropped ? '1980' : '0'}deg)`,
+              transform: `rotate(${dropped ? '180' : '0'}deg)`,
             }}
             src={DROP_ARROW}
             alt={DROP_ARROW}
