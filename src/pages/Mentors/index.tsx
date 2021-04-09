@@ -2,6 +2,7 @@ import React from 'react';
 
 import LEFT_TREE from 'assets/mentor/left_tree.svg';
 import BUG from 'assets/mentor/bug.svg';
+import DOTS from 'assets/mentor/dots.svg';
 import FOREGROUND_TREE from 'assets/mentor/foreground_tree.svg';
 import GROUND from 'assets/mentor/ground.svg';
 import RIGHT_TREE from 'assets/mentor/right_tree.svg';
@@ -67,6 +68,7 @@ const Mentors: React.FC = () => (
       <img src={LEFT_TREE} alt="" className={styles.left_tree} />
       <img src={GROUND} alt="" className={styles.ground} />
       <img src={BUG} alt="" className={styles.bug} />
+      <div className={styles.dots} style={{ backgroundImage: `url("${DOTS}")` }} />
       {/* <div className={styles.mentor_type_list}>
         {categories.map((category, i) => (
           <div
