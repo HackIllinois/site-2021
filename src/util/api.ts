@@ -1,22 +1,34 @@
-import { MethodType, FileType, RegistrationType, RegistrationTypeWithId, PrizeType, MentorTimeslotType, EventType, RegistrationRole } from 'util/types';
+import { WithId, MethodType, FileType, RegistrationType, PrizeType, MentorTimeslotType, EventType, RegistrationRole, ProfileType, RSVPType, ProfileResponseType } from 'util/types';
 
 const API = 'https://api.hackillinois.org';
 
-function request(method: MethodType, endpoint: string, body?: unknown) {
-  return fetch(API + endpoint, {
+export class APIError extends Error {
+  status: number;
+  type: string;
+
+  constructor({ message, status, type }: { message: string, status: number, type: string }) {
+    super(message);
+    this.status = status;
+    this.type = type;
+    this.name = 'APIError';
+  }
+}
+
+async function request(method: MethodType, endpoint: string, body?: unknown) {
+  const response = await fetch(API + endpoint, {
     method,
     headers: {
       Authorization: sessionStorage.getItem('token') || '',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
-  })
-    .then((res: Response) => {
-      if (res.status === 200) {
-        return res.json();
-      }
-      throw new Error('response status code not 200');
-    });
+  });
+
+  if (response.status !== 200) {
+    throw new APIError(await response.json());
+  }
+
+  return response.json();
 }
 
 export const isAuthenticated = (): string|null => sessionStorage.getItem('token');
@@ -52,28 +64,23 @@ export function getRolesSync(): string[] {
   return [];
 }
 
-export function getRegistration(role: RegistrationRole): Promise<RegistrationTypeWithId> {
+export function getRegistration(role: RegistrationRole): Promise<WithId<RegistrationType>> {
   return request('GET', `/registration/${role}/`);
 }
 
 // this function does not have a return type because different roles have different response types
-export function register(isEditing: boolean, role: RegistrationRole, registration: RegistrationType): Promise<RegistrationTypeWithId> {
+export function register(isEditing: boolean, role: RegistrationRole, registration: RegistrationType): Promise<WithId<RegistrationType>> {
   const method = isEditing ? 'PUT' : 'POST';
   return request(method, `/registration/${role}/`, registration);
 }
 
-type GetRsvpResType = {
-  id: string;
-  isAttending: boolean,
-};
-
-export function getRSVP(): Promise<GetRsvpResType> {
+export function getRSVP(): Promise<WithId<RSVPType>> {
   return request('GET', '/rsvp/');
 }
 
-export function rsvp(isEditing: boolean, registration: RegistrationType): Promise<GetRsvpResType> {
+export function rsvp(isEditing: boolean, rsvpData: RSVPType): Promise<WithId<RSVPType>> {
   const method = isEditing ? 'PUT' : 'POST';
-  return request(method, '/rsvp/', registration);
+  return request(method, '/rsvp/', rsvpData);
 }
 
 export function uploadFile(file: File, type: FileType): Promise<unknown> {
@@ -123,4 +130,13 @@ export function setMentorTimeslots(data: MentorTimeslotType[]): Promise<MentorTi
 
 export function getEvents(): Promise<EventType[]> {
   return request('GET', '/event/').then((res) => res.events);
+}
+
+export function getProfile(): Promise<ProfileResponseType> {
+  return request('GET', '/profile/');
+}
+
+export function createProfile(isEditing: boolean, profile: ProfileType): Promise<ProfileResponseType> {
+  const method = isEditing ? 'PUT' : 'POST';
+  return request(method, '/profile/', profile);
 }

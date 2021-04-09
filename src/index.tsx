@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
+import 'array-flat-polyfill';
+import 'unfocus';
 
 import './index.css';
 import App from './App';
