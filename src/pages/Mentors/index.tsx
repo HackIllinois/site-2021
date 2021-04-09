@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import LEFT_TREE from 'assets/mentor/left_tree.svg';
+import BUG from 'assets/mentor/bug.svg';
+import FOREGROUND_TREE from 'assets/mentor/foreground_tree.svg';
+import GROUND from 'assets/mentor/ground.svg';
+import RIGHT_TREE from 'assets/mentor/right_tree.svg';
+import LEFT_BUSH from 'assets/mentor/left_bush.svg';
+import RIGHT_BUSH from 'assets/mentor/right_bush.svg';
+// import DROP_ARROW from 'assets/mentor/drop_arrow.svg';
+import NavBar from 'components/NavBar';
+
 import styles from './styles.module.scss';
-
-import LEFT_TREE from '../../assets/mentor/left_tree.svg';
-import BUG from '../../assets/mentor/bug.svg';
-import FOREGROUND_TREE from '../../assets/mentor/foreground_tree.svg';
-import GROUND from '../../assets/mentor/ground.svg';
-import RIGHT_TREE from '../../assets/mentor/right_tree.svg';
-import LEFT_BUSH from '../../assets/mentor/left_bush.svg';
-import RIGHT_BUSH from '../../assets/mentor/right_bush.svg';
-// import DROP_ARROW from '../../assets/mentor/drop_arrow.svg';
-
 import mentors from './mentorData';
 
 // const [tab, setTab] = useState<number>(0);
 // const [dropped, setDropped] = useState(false);
 const Mentors: React.FC = () => (
   <div className={styles.background}>
+    <NavBar />
     {/* <div
       className={styles.select_wrapper}
       style={{ maxHeight: dropped ? '150px' : '45px' }}

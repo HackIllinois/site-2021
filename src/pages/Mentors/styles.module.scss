@@ -25,9 +25,11 @@
 .right_bush {
   position: absolute;
   width: 400px;
-  bottom: 0;
   right: 0;
-  z-index: 11;
+
+  z-index: 20;
+  pointer-events: none;
+  bottom: -25px;
 }
 
 .left_bush {
@@ -87,8 +89,8 @@
     padding-left: 25px;
   }
   position: absolute;
-  top: 20%;
-  bottom: 20%;
+  top: max(140px, 15%);
+  bottom: 15%;
   left: 20vh;
   right: 10%;
 
@@ -181,13 +183,12 @@
 }
 
 .mentor_description {
-  // font-size: 16px;
   font-size: 1em;
   line-height: 1.5em;
   @media (max-width: 900px) {
     font-size: .9em;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 500px) {
     font-size: .8em;
   }
 }
@@ -220,7 +221,7 @@
   top: -45px;
   left: 24px;
   @media (max-width: 500px) {
-    font-size: 1.5em;
+    font-size: 1.4em;
     top: -38px;
   }
 }
