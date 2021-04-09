@@ -8,8 +8,6 @@
 //   { name: 'Web Dev', angle: -4 },
 // ];
 
-import LOGO_LARGE from 'assets/logo_large.svg';
-
 type Mentor = { imageURL: string, name: string, description: string };
 const mentors: Mentor[] = [
   {
