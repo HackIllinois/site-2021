@@ -1,9 +1,10 @@
 import React from 'react';
 import clsx from 'clsx';
 
-import LEFT_TREES from 'assets/prizes/left_trees.svg';
+import LEFT_TREES from 'assets/prizes/left_trees2.svg';
 import RIGHT_TREES from 'assets/prizes/right_trees.svg';
 import CENTER_BUSHES from 'assets/prizes/center_bushes.svg';
+import LEFT_BUSHES from 'assets/prizes/left_bushes.svg';
 import MOUNTAINS from 'assets/prizes/mountains.svg';
 import HILLS from 'assets/prizes/hills.svg';
 import HILLS2 from 'assets/prizes/hills2.svg';
@@ -36,6 +37,7 @@ const Prizes = (): JSX.Element => (
         <img className={styles.leftTrees} src={LEFT_TREES} alt="" />
         <img className={styles.rightTrees} src={RIGHT_TREES} alt="" />
         <img className={styles.centerBushes} src={CENTER_BUSHES} alt="" />
+        <img className={styles.leftBushes} src={LEFT_BUSHES} alt="" />
         <img className={styles.hills} src={HILLS} alt="" />
         <img className={styles.car} src={CAR} alt="" />
       </div>
@@ -58,7 +60,7 @@ const Prizes = (): JSX.Element => (
                 {description && <p className={styles.description}>{description}</p>}
                 <div className={styles.spacer} />
                 <h4 className={styles.value}>${value}</h4>
-                {valueDetails && <span>({valueDetails})</span>}
+                {valueDetails && <span className={styles.valueDetails}>{valueDetails}</span>}
               </div>
             ))}
           </div>

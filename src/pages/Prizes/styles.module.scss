@@ -1,6 +1,4 @@
 .prizes {
-  $tablet-breakpoint: 1023px;
-  $mobile-breakpoint: 767px;
   background-color: #1E2E55;
   position: relative;
   min-height: 100%;
@@ -26,6 +24,11 @@
     .moon {
       left: 160px;
       top: 110px;
+      @media (max-width: 767px) {
+        left: auto;
+        right: 0px;
+        top: 80px
+      }
     }
 
     .mountains {
@@ -40,14 +43,17 @@
       height: calc(100% - 50px); // 100% - top
       bottom: 0;
       z-index: 2;
+      @media (max-width: 767px) {
+        bottom: -100px;
+      }
     }
 
-    // .leftBushes {
-    //   left: 0;
-    //   height: calc(100% - 50px); // 100% - top
-    //   bottom: 0;
-    //   z-index: 2;
-    // }
+    .leftBushes {
+      left: 0;
+      height: calc(100% - 353px); // 100% - top
+      bottom: 0;
+      z-index: 2;
+    }
 
     .centerBushes {
       left: 50%;
@@ -61,6 +67,10 @@
       top: 70px;
       height: calc(100% - 50px - 200px); // 100% - top - bottom
       bottom: 200px;
+      @media (max-width: 767px) {
+        bottom: auto;
+        top: 750px;
+      }
     }
 
     .hills {
@@ -96,7 +106,7 @@
     }
 
     @media (max-width: 767px) {
-      .car, .hills, .hills2, .centerBushes, .mountains, .solid {
+      .car, .hills, .hills2, .centerBushes, .mountains, .solid, .leftBushes {
         display: none;
       }
     }
@@ -133,6 +143,9 @@
     padding-bottom: 100px;
     z-index: 10;
     font-size: .8em;
+    @media (max-width: 767px) {
+      font-size: .7em;
+    }
 
     .prize {
       flex: 1;
@@ -147,6 +160,9 @@
 
       &.dummy {
         visibility: hidden;
+        @media (max-width: 767px) {
+          display: none;
+        }
       }
       
       .prizeIcon {
@@ -154,16 +170,6 @@
 
         &.dark {
           display: none;
-        }
-        
-        @media (max-width: $tablet-breakpoint) {
-          &.dark {
-            display: initial;
-          }
-
-          &.light {
-            display: none;
-          }
         }
       }
 
@@ -191,6 +197,11 @@
         margin: 0;
         margin-top: 10px;
       }
+
+      .valueDetails {
+        font-size: 1.125em;
+        line-height: 1.5em;
+      }
     }
 
     .mainPrizes {
@@ -215,7 +226,7 @@
       @media (max-width: 767px) {
         margin-top: 0;
         &:first-child {
-          margin-top: 0
+          margin-top: 100px;
         }
       }
 
