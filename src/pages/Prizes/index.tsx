@@ -9,9 +9,10 @@ import HILLS from 'assets/prizes/hills.svg';
 import HILLS2 from 'assets/prizes/hills2.svg';
 import STARS from 'assets/prizes/stars.svg';
 import MOON from 'assets/prizes/moon.svg';
+import CAR from 'assets/prizes/car.svg';
 
 import styles from './styles.module.scss';
-import prizeData from './prizes.json';
+import categories from './prizes.json';
 import PrizeIcon from './PrizeIcon';
 
 const Prizes = (): JSX.Element => (
@@ -25,13 +26,14 @@ const Prizes = (): JSX.Element => (
         <img className={styles.rightTrees} src={RIGHT_TREES} alt="" />
         <img className={styles.centerBushes} src={CENTER_BUSHES} alt="" />
         <img className={styles.hills} src={HILLS} alt="" />
+        <img className={styles.car} src={CAR} alt="" />
       </div>
       <div className={styles.solid} />
       <div className={styles.gradient} />
     </div>
 
     <div className={styles.content}>
-      <div className={styles.mainPrizes}>
+      {/* <div className={styles.mainPrizes}>
         {prizeData.mainPrizes.map(({ name, description, value }) => (
           <div className={styles.prize}>
             <PrizeIcon className={clsx(styles.prizeIcon, styles.light)} color="#ADD8CD" />
@@ -41,20 +43,22 @@ const Prizes = (): JSX.Element => (
             <h4 className={styles.value}>${value}</h4>
           </div>
         ))}
-      </div>
+      </div> */}
 
-      {prizeData.categories.map(({ title, prizes, lightColor, darkColor }) => (
+      {categories.map(({ title, prizes, lightColor, darkColor, hideTitle }) => (
         <div className={styles.category}>
-          <h2 className={styles.title}>{title}</h2>
+          <h2 className={clsx(styles.title, hideTitle && styles.hide)}>{title}</h2>
 
           <div className={styles.prizesContainer}>
-            {prizes.map(({ name, description, value }) => (
-              <div className={styles.prize}>
+            {prizes.map(({ name, description, value, valueDetails, dummy }) => (
+              <div className={clsx(styles.prize, dummy && styles.dummy)}>
                 <PrizeIcon className={clsx(styles.prizeIcon, styles.light)} color={lightColor} />
                 <PrizeIcon className={clsx(styles.prizeIcon, styles.dark)} color={darkColor} />
                 <h3 className={styles.name}>{name}</h3>
-                <p className={styles.description}>{description}</p>
+                {description && <p className={styles.description}>{description}</p>}
+                <div className={styles.spacer} />
                 <h4 className={styles.value}>${value}</h4>
+                {valueDetails && <span>({valueDetails})</span>}
               </div>
             ))}
           </div>

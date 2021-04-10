@@ -40,6 +40,7 @@
       left: 0;
       height: calc(100% - 50px); // 100% - top
       bottom: 0;
+      z-index: 2;
     }
 
     .centerBushes {
@@ -68,6 +69,13 @@
       width: 45%;
     }
 
+    .car {
+      z-index: 1;
+      bottom: -330px;
+      left: 10%;
+      width: 65%;
+    }
+
     .solid {
       position: absolute;
       top: 600px;
@@ -76,14 +84,15 @@
       right: 0;
       background-color: #161654;
     }
-
+    
     .gradient {
       position: absolute;
-      top: 700px;
+      top: 680px;
       bottom:0;
       left: 0;
       right: 0;
       background: linear-gradient(0deg, #0B1132 17.43%, #151C44 82.24%, rgba(21, 28, 68, 0) 98.39%);
+      z-index: 2;
     }
   }
 
@@ -92,7 +101,10 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    // padding-top: 50px;
     padding-bottom: 100px;
+    z-index: 10;
+    // visibility: hidden;
 
     .prize {
       flex: 1;
@@ -101,10 +113,17 @@
       color: white;
       padding: 20px;
       background-color: rgba(255, 255, 255, 0.2);
+      // background-color: #4B506F;
       border-radius: 25px;
+      display: flex;
+      flex-direction: column;
+
+      &.dummy {
+        visibility: hidden;
+      }
       
       .prizeIcon {
-        margin: auto;
+        margin: 0 auto;
 
         &.dark {
           display: none;
@@ -125,11 +144,17 @@
         font-size: 1.5em;
         font-weight: 600;
         text-transform: uppercase;
+        margin-bottom: 10px;
       }
 
       .description {
         font-size: 1.125em;
         line-height: 1.5em;
+        margin-top: 0;
+      }
+
+      .spacer {
+        flex: 1;
       }
 
       .value {
@@ -137,6 +162,7 @@
         font-size: 3em;
         font-weight: 600;
         margin: 0;
+        margin-top: 10px;
       }
     }
 
@@ -153,11 +179,18 @@
     .category {
       flex: 1;
       width: 90%;
+      margin-top: 200px;
+      &:first-child {
+        margin-top: 150px;
+      }
 
       .title {
         color: white;
         font-weight: 600;
         font-size: 1.875em;
+        &.hide {
+          visibility: hidden;
+        }
       }
 
       .prizesContainer {

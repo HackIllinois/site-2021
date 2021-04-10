@@ -1,29 +1,56 @@
-{
-  "mainPrizes": [
-    { "name": "Prize X", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet tincidunt cras porttitor nisl, metus quis. Nullam nulla volutpat dolor.", "value": 300 },
-    { "name": "Prize X", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet tincidunt cras porttitor nisl, metus quis. Nullam nulla volutpat dolor.", "value": 300 }
-  ],
-  "categories": [
-    {
-      "title": "Category X",
-      "lightColor": "#EE6C72",
-      "darkColor": "#EE6C72",
-      "prizes": [
-        { "name": "Prize X", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet tincidunt cras porttitor nisl, metus quis. Nullam nulla volutpat dolor.", "value": 300 },
-        { "name": "Prize X", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet tincidunt cras porttitor nisl, metus quis. Nullam nulla volutpat dolor.", "value": 300 },
-        { "name": "Prize X", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet tincidunt cras porttitor nisl, metus quis. Nullam nulla volutpat dolor.", "value": 300 },
-        { "name": "Prize X", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet tincidunt cras porttitor nisl, metus quis. Nullam nulla volutpat dolor.", "value": 300 }
-      ]
-    },
-    {
-      "title": "Category X",
-      "lightColor": "#EF8448",
-      "darkColor": "#981D23",
-      "prizes": [
-        { "name": "Prize X", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet tincidunt cras porttitor nisl, metus quis. Nullam nulla volutpat dolor.", "value": 300 },
-        { "name": "Prize X", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet tincidunt cras porttitor nisl, metus quis. Nullam nulla volutpat dolor.", "value": 300 },
-        { "name": "Prize X", "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Laoreet tincidunt cras porttitor nisl, metus quis. Nullam nulla volutpat dolor.", "value": 300 }
-      ]
-    }
-  ]
-}
+[
+  {
+    "title": "",
+    "lightColor": "#ADD8CD",
+    "darkColor": "#2C9C98",
+    "prizes": [
+      {
+        "dummy": true
+      },
+      {
+        "name": "First Place",
+        "description": "",
+        "value": 1500
+      },
+      {
+        "name": "Second Place",
+        "description": "",
+        "value": 1000
+      },
+      {
+        "name": "Third Place",
+        "description": "",
+        "value": 800
+      }
+    ]
+  },
+  {
+    "title": "Other",
+    "hideTitle": true,
+    "lightColor": "#EE6C72",
+    "darkColor": "#EE6C72",
+    "prizes": [
+      {
+        "name": "Staff Pick",
+        "description": "HackIllinois staff will be reviewing projects to see which one we find to be the most creative, technically impressive, and original!",
+        "value": 500
+      },
+      {
+        "name": "Cargill’s Choice: Best Food Related Hack",
+        "description": "This will be awarded to the project that incorporates the theme of food in its usage in the most novel and practical way.",
+        "value": 1000
+      },
+      {
+        "name": "Capital One: Best Financial Hack",
+        "description": "This will be awarded to the most novel project pertaining to a field related to finance! Whether it be about managing business accounts or personal budgets or spending, the project must creatively incorporate some fiscal theme.",
+        "value": 250,
+        "valueDetails": "per team member"
+      },
+      {
+        "name": "CAT’s Choice",
+        "description": "TBA at Opening Ceremony!",
+        "value": 800
+      }
+    ]
+  }
+]
