@@ -57,7 +57,7 @@ const Prizes = (): JSX.Element => (
                 <PrizeIcon className={clsx(styles.prizeIcon, styles.light)} color={lightColor} />
                 <PrizeIcon className={clsx(styles.prizeIcon, styles.dark)} color={darkColor} />
                 <h3 className={styles.name}>{name}</h3>
-                {description && <p className={styles.description}>{description}</p>}
+                {description && <p className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />}
                 <div className={styles.spacer} />
                 <h4 className={styles.value}>${value}</h4>
                 {valueDetails && <span className={styles.valueDetails}>{valueDetails}</span>}
