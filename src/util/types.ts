@@ -1,3 +1,5 @@
+export type WithId<Type> = Type & { id: string; };
+
 export type MethodType = 'GET' | 'POST' | 'PUT' | 'DELETE';
 export type FileType = 'resume' | 'photo' | 'blobstore';
 
@@ -25,13 +27,10 @@ export type RegistrationType = {
   resumeFilename?: string;
 };
 
-export interface RegistrationTypeWithId extends RegistrationType {
-  id: string;
-}
-
 export type RegistrationRole = 'attendee' | 'mentor';
 
 export interface EventType {
+  id: string;
   name: string;
   description: string;
   startTime: number;
@@ -44,6 +43,7 @@ export interface EventType {
   }[];
   sponsor?: string;
   eventType: string;
+  points: number;
 }
 
 export type DayType = {
@@ -71,4 +71,25 @@ export type MentorTimeslotType = {
   email: string;
   start_date: string;
   end_date: string;
+};
+
+export type RSVPType = {
+  isAttending: boolean;
+};
+
+export type ProfileType = Partial<{
+  firstName: string;
+  lastName: string;
+  timezone: string;
+  discord: string;
+  avatarUrl: string;
+  teamStatus: 'LOOKING_FOR_TEAM' | 'LOOKING_FOR_MEMBERS' | 'NOT_LOOKING';
+  interests: string[];
+  description: string;
+}>;
+
+export type ProfileResponseType = WithId<Required<ProfileType>> & { points: number };
+
+export type ZoomLinks = {
+  [id: string]: string;
 };

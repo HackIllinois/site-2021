@@ -82,14 +82,15 @@ const Select = ({ name, options = [], creatable, isMulti = false, className, ...
       <SelectComponent
         name={name}
         ref={ref}
-        value={isFocused ? '' : getValue()} // hide value when menu is open so placeholder can be seen
+        // hide value when menu is open so placeholder can be seen (unless it's a multiselect)
+        value={(isFocused && !isMulti) ? '' : getValue()}
         onChange={handleChange as any}
         onBlur={() => { setIsFocused(false); onBlur(); }}
         onFocus={() => setIsFocused(true)}
         className={clsx(styles.select, className)}
         options={options}
         isMulti={isMulti}
-        blurInputOnSelect
+        blurInputOnSelect={!isMulti}
         closeMenuOnSelect={!isMulti}
         menuPlacement="auto"
         menuPortalTarget={document.body}
