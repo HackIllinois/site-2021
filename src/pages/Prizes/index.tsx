@@ -16,6 +16,14 @@ import styles from './styles.module.scss';
 import categories from './prizes.json';
 import PrizeIcon from './PrizeIcon';
 
+type Prize = Partial<{
+  name: string;
+  description: string;
+  value: number;
+  valueDetails: string;
+  dummy: boolean;
+}>;
+
 const Prizes = (): JSX.Element => (
   <div className={styles.prizes}>
     <NavBar showHome />
@@ -42,7 +50,7 @@ const Prizes = (): JSX.Element => (
           <h2 className={clsx(styles.title, hideTitle && styles.hide)}>{title}</h2>
 
           <div className={styles.prizesContainer}>
-            {prizes.map(({ name, description, value, valueDetails, dummy }) => (
+            {(prizes as Prize[]).map(({ name, description, value, valueDetails, dummy }) => (
               <div className={clsx(styles.prize, dummy && styles.dummy)}>
                 <PrizeIcon className={clsx(styles.prizeIcon, styles.light)} color={lightColor} />
                 <PrizeIcon className={clsx(styles.prizeIcon, styles.dark)} color={darkColor} />
