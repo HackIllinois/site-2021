@@ -10,6 +10,7 @@ import HILLS2 from 'assets/prizes/hills2.svg';
 import STARS from 'assets/prizes/stars.svg';
 import MOON from 'assets/prizes/moon.svg';
 import CAR from 'assets/prizes/car.svg';
+import NavBar from 'components/NavBar';
 
 import styles from './styles.module.scss';
 import categories from './prizes.json';
@@ -17,6 +18,8 @@ import PrizeIcon from './PrizeIcon';
 
 const Prizes = (): JSX.Element => (
   <div className={styles.prizes}>
+    <NavBar showHome />
+
     <div className={styles.background}>
       <div className={styles.topSection} style={{ backgroundImage: `url(${STARS})` }}>
         <img className={styles.moon} src={MOON} alt="" />
@@ -33,17 +36,6 @@ const Prizes = (): JSX.Element => (
     </div>
 
     <div className={styles.content}>
-      {/* <div className={styles.mainPrizes}>
-        {prizeData.mainPrizes.map(({ name, description, value }) => (
-          <div className={styles.prize}>
-            <PrizeIcon className={clsx(styles.prizeIcon, styles.light)} color="#ADD8CD" />
-            <PrizeIcon className={clsx(styles.prizeIcon, styles.dark)} color="#2C9C98" />
-            <h3 className={styles.name}>{name}</h3>
-            <p className={styles.description}>{description}</p>
-            <h4 className={styles.value}>${value}</h4>
-          </div>
-        ))}
-      </div> */}
 
       {categories.map(({ title, prizes, lightColor, darkColor, hideTitle }) => (
         <div className={styles.category}>
