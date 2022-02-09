@@ -1,4 +1,6 @@
-import { WithId, MethodType, FileType, RegistrationType, PrizeType, MentorTimeslotType, EventType, RegistrationRole, ProfileType, RSVPType, ProfileResponseType, ZoomLinks } from 'util/types';
+import { WithId, MethodType, FileType, RegistrationType, MentorTimeslotType, EventType, RegistrationRole, ProfileType, RSVPType, ProfileResponseType, ZoomLinks } from 'util/types';
+import { events } from '../data/events.json';
+import zoomlinks from '../data/zoomlinks.json';
 
 const API = 'https://api.hackillinois.org';
 
@@ -107,10 +109,6 @@ export function getQR():Promise<GetQrResType> {
   return request('GET', '/user/qr/');
 }
 
-export function getPrizes(): Promise<PrizeType[]> {
-  return request('GET', '/upload/blobstore/prizes/').then((res) => res.data);
-}
-
 type RefreshTokenResType = {
   token: string;
 };
@@ -129,7 +127,7 @@ export function setMentorTimeslots(data: MentorTimeslotType[]): Promise<MentorTi
 }
 
 export function getEvents(): Promise<EventType[]> {
-  return request('GET', '/event/').then((res) => res.events);
+  return Promise.resolve(events);
 }
 
 export function getProfile(): Promise<ProfileResponseType> {
@@ -142,5 +140,5 @@ export function createProfile(isEditing: boolean, profile: ProfileType): Promise
 }
 
 export function getZoomLinks(): Promise<ZoomLinks> {
-  return request('GET', '/upload/blobstore/zoomlinks/').then((res) => res.data);
+  return Promise.resolve(zoomlinks);
 }
