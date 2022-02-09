@@ -15,8 +15,8 @@ import APP_LOGO from 'assets/app_logo.png';
 import NavBar from 'components/NavBar';
 
 import styles from './styles.module.scss';
-import categories from './prizes.json';
-import winners from './winners.json';
+import categories from '../../data/prizes.json';
+import winners from '../../data/winners.json';
 import PrizeIcon from './PrizeIcon';
 
 type Prize = Partial<{
